@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+source bw-package-manager
+
+install_bitwarden () {
+  if command -v bw
+  then
+    return 1
+  fi
+
+  if ! command -v unzip
+  then
+    install_package unzip
+  fi
+
+  if [[ "$PACKAGEMANAGER" == "apt" || "$PACKAGEMANAGER" == "pacman"* ]]; then
+    install_package unzip
+    curl -s --location "https://vault.bitwarden.com/download/?app=cli&platform=linux" --output bw.zip
+    unzip bw.zip -d . 
+    chmod +x bw
+    sudo mv bw /usr/local/bin
+    rm bw.zip
+  fi
+
+  if [[ "$PACKAGEMANAGER" == "brew"* ]]; then
+    curl -s --location "https://vault.bitwarden.com/download/?app=cli&platform=macos" --output bw.zip
+    unzip bw.zip -d . 
+    chmod +x bw
+    sudo mkdir -p /usr/local/bin
+    sudo mv bw /usr/local/bin
+    rm bw.zip
+  fi
+}
+
+install_bitwarden
+

@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+ensure_api_is_running () {
+  tmux has-session -t "bw-identity" 2>/dev/null
+
+  if [ $? != 0 ]; then
+    bw-start-identity
+  fi
+
+  tmux has-session -t "bw-api" 2>/dev/null
+
+  if [ $? != 0 ]; then
+    bw-start-api
+  fi
+}
+
+ensure_web_is_running () {
+  tmux has-session -t "bw-web" 2>/dev/null
+
+  if [ $? != 0 ]; then
+    bw-start-web
+  fi
+}
+
+start_directory_connector () {
+  if ! command -v tmux
+  then
+    bw-install-tmux
+  fi
+
+  ensure_api_is_running
+  ensure_web_is_running
+  tmux new-session -d -s bw-directory-connector -n run 'bw-run-directory-connector'
+}
+
+start_directory_connector

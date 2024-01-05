@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+if ! command -v tmux
+then
+  bw-install-tmux
+fi
+
+tmux new-session -d -s bw-identity -n run 'bw-run-identity'

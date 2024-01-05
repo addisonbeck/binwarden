@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+source core
+
+ensure_project_ready () {
+  if [ ! -d "$HOME/bitwarden/server" ]; then
+    bw-build-server
+  fi
+
+  if [ ! -d "$HOME/bitwarden/logs" ]; then
+    cd $HOME/bitwarden
+    mkdir logs
+  fi
+
+  rm -f $HOME/bitwarden/logs/bw-api.log
+  touch $HOME/bitwarden/logs/bw-api.log
+}
+
+install_packages () {
+  cd $HOME/bitwarden/server/src/Api
+  dotnet clean
+  dotnet restore
+}
+
+start_container () {
+  bw-run-docker-mssql
+  bw-run-docker-azurite
+  bw-run-docker-mailcatcher
+}
+
+start_project () {
+  cd $HOME/bitwarden/server/src/Api
+  dotnet run 2>&1 | tee -a $HOME/bitwarden/logs/bw-api.log
+}
+
+run_api () {
+  ensure_project_ready
+  #install_packages
+  start_container
+  start_project
+}
+
+run_api

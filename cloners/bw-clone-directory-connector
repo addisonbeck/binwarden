@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+install_dependencies () {
+  if ! command -v node
+  then
+    bw-install-node
+  fi
+
+  if [ ! -d "$HOME/bitwarden/server" ]; then
+    bw-build-server
+  fi
+}
+
+clone_repo () {
+  cd $HOME/bitwarden
+  git clone git@github.com:bitwarden/directory-connector.git
+}
+
+build_dc () {
+  cd $HOME/bitwarden/directory-connector
+  npm ci
+}
+
+setup_directory_connector () {
+  install_dependencies
+  clone_repo
+  build_dc
+}
+
+setup_directory_connector

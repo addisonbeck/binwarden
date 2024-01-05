@@ -1,0 +1,34 @@
+#!/bin/env bash
+
+install_dependencies () {
+  if ! command -v node
+  then
+    bw-install-node
+  fi
+
+  mkdir -p $HOME/bitwarden
+}
+
+clone_repo () {
+  cd $HOME/bitwarden
+  git clone git@github.com:bitwarden/clients.git
+}
+
+configure_git () {
+  git config blame.ignoreRevsFile .git-blame-ignore-revs
+}
+
+install_packages () {
+  npm ci
+}
+
+setup_bitwarden_clients () {
+  install_dependencies
+  clone_repo
+  cd $HOME/bitwarden/clients
+  configure_git
+  install_packages
+}
+
+setup_bitwarden_clients
+clone-web

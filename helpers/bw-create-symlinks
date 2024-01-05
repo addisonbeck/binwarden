@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+create_symlinks () {
+  ln -s $HOME/bin/binwarden/secrets-managers/* $HOME/bin/binwarden/secrets-managers-link
+  ln -s $HOME/bin/binwarden/cloners/* $HOME/bin/binwarden/cloners-link
+  ln -s $HOME/bin/binwarden/installers/* $HOME/bin/binwarden/installers-link
+  ln -s $HOME/bin/binwarden/one-liners/* $HOME/bin/binwarden/one-liners-link
+  ln -s $HOME/bin/binwarden/starters/* $HOME/bin/binwarden/starter-link
+  ln -s $HOME/bin/binwarden/runners/* $HOME/bin/binwarden/runners-link
+  ln -s $HOME/bin/binwarden/helpers/* $HOME/bin/binwarden/helpers-link
+}
+
+create_symlinks

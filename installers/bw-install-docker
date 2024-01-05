@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+source bw-package-manager
+
+install_docker () {
+  if command -v docker
+  then
+    return 1
+  fi
+
+  if [[ "$PACKAGEMANAGER" == "apt" ]]; then
+    sudo addgroup docker
+    sudo usermod -aG docker $(whoami)
+    sudo apt-get -qq install apt-transport-https ca-certificates curl software-properties-common
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg \ 
+      --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list
+    sudo apt-get -qq update
+    sudo apt-get -qq install docker-ce 
+  fi
+
+  if [[ "$PACKAGEMANAGER" == "pacman" ]]; then
+    sudo groupadd docker
+    sudo usermod -aG docker $(whoami)
+    install_package docker
+    install_package docker-compose
+    sudo systemctl enable --now docker.service
+  fi
+}
+
+install_docker
+

@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+REPOSLUG="addisonbeck/binwarden"
+
+clone_binwarden () {
+  if [[ ! ":$PATH:" == *":$HOME/bin:"* ]]; then
+    echo "Your path is missing $HOME/bin/binwarden. Please add it and try again!"
+    exit 0
+  fi
+  cd $HOME 
+  mkdir -p bin
+  cd bin
+  git clone https://github.com/${REPOSLUG}.git
+  cd binwarden
+  git remote set-url origin git@github.com:${REPOSLUG}.git
+}
+
+clone_binwarden
+bw-create-symlinks
+
+echo "All done! Please make sure to configure ssh in git before continuing. This can be done manually or with bw-generate-commit-signature"
+echo "More info: https://github.com/$REPOSLUG/blob/main/docs/configuring-github-ssh.md"
+

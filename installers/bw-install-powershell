@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+source bw-package-manager
+
+install_powershell () {
+  if command -v pwsh
+  then
+    return 1
+  fi
+
+  if [[ "$PACKAGEMANAGER" == "pacman" ]]; then
+    cd ~
+    git clone https://aur.archlinux.org/powershell-bin.git
+    cd powershell-bin
+    makepkg -sirc
+  fi
+}
+
+install_powershell

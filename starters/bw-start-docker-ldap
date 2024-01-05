@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+CONTAINERNAME=bitwardenserver-open-ldap-1
+COMPOSEPROFILENAME=ldap
+LOGFILENAME=bw-docker-ldap.log
+
+ensure_project_ready () {
+  if [ ! -d "$HOME/bitwarden/server" ]; then
+    bw-build-server
+  fi
+
+  if [ ! -d "$HOME/bitwarden/logs" ]; then
+    cd $HOME/bitwarden
+    mkdir logs
+  fi
+
+  rm -f $HOME/bitwarden/logs/$LOGFILENAME
+  touch $HOME/bitwarden/logs/$LOGFILENAME
+}
+
+start () {
+  ensure_project_ready
+  cd $HOME/bitwarden/server/dev
+  if [ ! "$(docker ps | grep $CONTAINERNAME)" ]; then
+    curl -s --location "https://contributing.bitwarden.com/assets/files/directory-20-54a0601795a014cf9f68b11c77a6cb27.ldif" --output directory.ldif
+    docker compose --profile $COMPOSEPROFILENAME up -d 2>&1 | tee -a $HOME/bitwarden/logs/$LOGFILENAME
+  fi
+}
+
+start

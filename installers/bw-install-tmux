@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+source bw-package-manager
+
+install_tmux () {
+  if command -v tmux
+  then
+    return 1
+  fi
+
+  if [[ "$PACKAGEMANAGER" == "apt" ]]; then
+    install_package "libevent-dev ncurses-dev build-essential bison pkg-config"
+    wget https://github.com/tmux/tmux/releases/download/3.3a/tmux-3.3a.tar.gz
+    tar -zxf tmux-3.3a.tar.gz
+    cd tmux-3.3a/
+    ./configure
+    make && sudo make install
+    rm ~/tmux-3.3a.tar.gz
+    rm -rf ~/tmux-3.3a
+  fi
+  if [[ "$PACKAGEMANAGER" == "brew" || "$PACKAGEMANAGER" == "pacman" ]]; then
+    install_package tmux
+  fi
+}
+
+
+install_tmux
+

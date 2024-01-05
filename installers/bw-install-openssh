@@ -1,0 +1,10 @@
+#!/usr/bin/bash
+
+source bw-package-manager
+
+install_openssh () {
+  install_package openssh
+}
+
+install_openssh
+
