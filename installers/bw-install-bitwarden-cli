@@ -13,7 +13,7 @@ install_bitwarden () {
     install_package unzip
   fi
 
-  if [[ "$PACKAGEMANAGER" == "apt" || "$PACKAGEMANAGER" == "pacman"* ]]; then
+  if [[ "$PACKAGEMANAGER" == "apt" || "$PACKAGEMANAGER" == "pacman" ]]; then
     install_package unzip
     curl -s --location "https://vault.bitwarden.com/download/?app=cli&platform=linux" --output bw.zip
     unzip bw.zip -d . 
@@ -22,7 +22,7 @@ install_bitwarden () {
     rm bw.zip
   fi
 
-  if [[ "$PACKAGEMANAGER" == "brew"* ]]; then
+  if [[ "$PACKAGEMANAGER" == "brew" ]]; then
     curl -s --location "https://vault.bitwarden.com/download/?app=cli&platform=macos" --output bw.zip
     unzip bw.zip -d . 
     chmod +x bw

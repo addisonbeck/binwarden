@@ -18,6 +18,10 @@ install_mkcert () {
   if [[ "$PACKAGEMANAGER" == "pacman" ]]; then
     install_package mkcert
   fi
+
+  if [[ "$PACKAGEMANAGER" == "brew" ]]; then
+    install_package mkcert
+  fi
 }
 
 install_mkcert

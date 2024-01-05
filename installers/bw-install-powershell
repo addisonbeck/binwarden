@@ -5,7 +5,21 @@ source bw-package-manager
 install_powershell () {
   if command -v pwsh
   then
+    install_package "powershell"
     return 1
+  fi
+
+  if ! command -v dotnet
+  then
+    install-dotnet
+  fi
+
+  if [[ "$PACKAGEMANAGER" == "brew" ]]; then
+    install_package powershell
+  fi
+
+  if [[ "$PACKAGEMANAGER" == "apt" ]]; then
+    install_package powershell
   fi
 
   if [[ "$PACKAGEMANAGER" == "pacman" ]]; then

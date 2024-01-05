@@ -3,7 +3,18 @@
 source bw-package-manager
 
 install_openssh () {
-  install_package openssh
+  if [[ "$PACKAGEMANAGER" == "apt" ]]; then
+    install_package openssh-client
+    install_package openssh-server
+  fi
+
+  if [[ "$PACKAGEMANAGER" == "brew" ]]; then
+    install_package openssh
+  fi
+
+  if [[ "$PACKAGEMANAGER" == "pacman" ]]; then
+    install_package openssh
+  fi
 }
 
 install_openssh

@@ -26,6 +26,10 @@ install_docker () {
     install_package docker-compose
     sudo systemctl enable --now docker.service
   fi
+
+  if [[ "$PACKAGEMANAGER" == "brew" ]]; then
+    install_package docker
+  fi
 }
 
 install_docker

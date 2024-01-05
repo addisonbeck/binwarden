@@ -9,6 +9,14 @@ install_azure_data_studio () {
     cd azuredatastudio-bin
     makepkg -sirc
   fi
+
+  if [[ "$PLATFORM" == "apt" ]]; then
+    # TODO
+  fi
+
+  if [[ "$PLATFORM" == "brew" ]]; then
+    install_package azure-data-studio
+  fi
 }
 
 install_azure_data_studio
