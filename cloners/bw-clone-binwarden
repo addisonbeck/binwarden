@@ -3,7 +3,7 @@
 REPOSLUG="addisonbeck/binwarden"
 
 clone_binwarden () {
-  if [[ ! ":$PATH:" == *":$HOME/bin:"* ]]; then
+  if [[ ! ":$PATH:" == *":$HOME/bin/binwarden:"* ]]; then
     echo "Your path is missing $HOME/bin/binwarden. Please add it and try again!"
     exit 0
   fi
