@@ -16,7 +16,7 @@ clone_binwarden () {
 }
 
 clone_binwarden
-bw-create-symlinks
+source $HOME/bin/binwarden/helpers/bw-create-symlinks
 
 echo "All done! Please make sure to configure ssh in git before continuing. This can be done manually or with bw-generate-commit-signature"
 echo "More info: https://github.com/$REPOSLUG/blob/main/docs/configuring-github-ssh.md"
