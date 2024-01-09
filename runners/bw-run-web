@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
 ensure_api_is_running () {
+  if ! command -v tmux
+  then
+    bw-install-tmux
+  fi
+
   tmux has-session -t "bw-run-identity" 2>/dev/null
 
   if [ $? != 0 ]; then

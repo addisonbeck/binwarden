@@ -5,7 +5,6 @@ then
   bw-install-tmux
 fi
 
-
 tmux has-session -t "bw-run-identity" 2>/dev/null
 
 if [ $? != 1 ]; then

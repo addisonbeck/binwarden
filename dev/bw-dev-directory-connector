@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
 ensure_project_is_running () {
+  if ! command -v tmux
+  then
+    bw-install-tmux
+  fi
+
   tmux has-session -t "bw-run-directory-connector" 2>/dev/null
 
   if [ $? != 0 ]; then
@@ -9,8 +14,8 @@ ensure_project_is_running () {
 }
 
 start_sessions () {
-  tmux new-session -d -s dev-directory-connector -n nvim "cd $HOME/bitwarden/directory-connector && nvim"
-  tmux switch-client -t dev-directory-connector || (start-tmux "tmux switch-client -t dev-directory-connector")
+  tmux new-session -d -s bw-dev-directory-connector -n nvim "cd $HOME/bitwarden/directory-connector && nvim"
+  tmux switch-client -t bw-dev-directory-connector || (start-tmux "tmux switch-client -t bw-dev-directory-connector")
 }
 
 ensure_project_is_running
