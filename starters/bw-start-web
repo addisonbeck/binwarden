@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-source core
-
 ensure_project_ready () {
   if [ ! -d "$HOME/bitwarden/clients" ]; then
     bw-scaffold-clients
@@ -28,10 +26,10 @@ start_project () {
   npm run build:bit:dev:watch > $HOME/bitwarden/logs/bw-web.log
 }
 
-run_web () {
+start_web () {
   ensure_project_ready
   #install_packages
   start_project
 }
 
-run_web
+start_web

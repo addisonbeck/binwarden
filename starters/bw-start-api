@@ -23,9 +23,9 @@ install_packages () {
 }
 
 start_container () {
-  bw-run-docker-mssql
-  bw-run-docker-azurite
-  bw-run-docker-mailcatcher
+  bw-start-docker-mssql
+  bw-start-docker-azurite
+  bw-start-docker-mailcatcher
 }
 
 start_project () {
@@ -33,11 +33,11 @@ start_project () {
   dotnet run 2>&1 | tee -a $HOME/bitwarden/logs/bw-api.log
 }
 
-run_api () {
+start_api () {
   ensure_project_ready
   #install_packages
   start_container
   start_project
 }
 
-run_api
+start_api

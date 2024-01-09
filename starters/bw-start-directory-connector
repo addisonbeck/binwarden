@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-source core
-
 ensure_project_ready () {
   if [ ! -d "$HOME/bitwarden/directory-connector" ]; then
     bw-build-directory-connector
@@ -23,7 +21,7 @@ install_packages () {
 }
 
 start_container () {
-  bw-run-docker-ldap
+  bw-start-docker-ldap
 }
 
 start_project () {
@@ -31,11 +29,11 @@ start_project () {
   npm run electron 2>&1 | tee -a $HOME/bitwarden/logs/bw-directory-connector.log
 }
 
-run_directory_connector () {
+start_directory_connector () {
   ensure_project_ready
   #install_packages
   start_container
   start_project
 }
 
-run_directory_connector
+start_directory_connector

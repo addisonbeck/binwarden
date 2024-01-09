@@ -5,4 +5,11 @@ then
   bw-install-tmux
 fi
 
-tmux new-session -d -s bw-identity -n run 'bw-run-identity'
+
+tmux has-session -t "bw-run-identity" 2>/dev/null
+
+if [ $? != 0 ]; then
+  tmux kill-session -t bw-run-identity
+fi
+
+tmux new-session -d -s bw-run-identity -n run 'bw-start-identity'

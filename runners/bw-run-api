@@ -5,4 +5,11 @@ then
   bw-install-tmux
 fi
 
-tmux new-session -d -s bw-api -n run 'bw-run-api'
+
+tmux has-session -t "bw-run-api" 2>/dev/null
+
+if [ $? != 0 ]; then
+  tmux kill-session -t bw-run-api
+fi
+
+tmux new-session -d -s bw-run-api -n run 'bw-start-api'
