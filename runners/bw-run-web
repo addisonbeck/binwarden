@@ -23,7 +23,7 @@ start_web () {
 
   tmux has-session -t "bw-run-web" 2>/dev/null
 
-  if [ $? != 0 ]; then
+  if [ $? != 1 ]; then
     tmux kill-session -t bw-run-web
   fi
 

@@ -33,7 +33,7 @@ start_directory_connector () {
 
   tmux has-session -t "bw-run-directory-connector" 2>/dev/null
 
-  if [ $? != 0 ]; then
+  if [ $? != 1 ]; then
     tmux kill-session -t bw-run-directory-connector
   fi
 

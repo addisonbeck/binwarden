@@ -8,7 +8,7 @@ fi
 
 tmux has-session -t "bw-run-identity" 2>/dev/null
 
-if [ $? != 0 ]; then
+if [ $? != 1 ]; then
   tmux kill-session -t bw-run-identity
 fi
 
