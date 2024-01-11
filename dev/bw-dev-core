@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+
+source bw-logger
+
+export SESSION_PREFIX="⚠️"
+export SEPARATOR_CHAR="▶"
+export SESSION_NAME="unnamed session"
+export WINDOW_NAME="unnamed window"
+export STARTER_COMMAND="echo 'No command specified!'"
+
+function full_session_name () {
+  printf "${SESSION_PREFIX} ${SEPARATOR_CHAR} ${SESSION_NAME}"
+}
+
+function kill_session_if_exists () {
+  ensure_command_installed tmux
+  tmux has-session -t "$(full_session_name)" > /dev/null 2>&1
+  if [ $? != 1 ]; then
+    log_warning "Session \"$(full_session_name)\" already exists and will be restarted."
+    tmux kill-session -t "$(full_session_name)" > /dev/null 2>&1
+  fi
+}
+
+function start_session () {
+  ensure_command_installed tmux
+  tmux has-session -t "$(full_session_name)" > /dev/null 2>&1
+  if [ $? != 0 ]; then
+    log_info "Starting session \"$(full_session_name)\""
+    tmux new-session -d -s "$(full_session_name)" -n "${WINDOW_NAME}" "${STARTER_COMMAND}" > /dev/null 2>&1
+  else
+    log_info "Session \"$(full_session_name)\" is already running."
+  fi
+}
+
+function ensure_command_installed () {
+  if ! command -v ${1} > /dev/null 2>&1
+  then
+    log_warning  "${1} not found - it will be installed now"
+    bw-install-${1}
+  else
+    log_success "${1} detected"
+  fi
+}
+
+function attach_to_session () {
+  ensure_command_installed tmux
+  tmux a -t "$(full_session_name)"
+  tmux switch-client -t "$(full_session_name)" || (start-tmux "tmux switch-client -t \"$(full_session_name)\"")
+}
+
+function ensure_repo_cloned () {
+  if [ ! -d "$HOME/${1}" ]; then
+    bw-clone-${1}
+  fi
+}

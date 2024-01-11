@@ -3,8 +3,8 @@
 source bw-dev-core
 
 SESSION_PREFIX="✍️"
-SESSION_NAME="directory-connector dev"
-STARTER_COMMAND="cd $HOME/bitwarden/directory-connector; nvim"
+SESSION_NAME="clients dev"
+STARTER_COMMAND="cd $HOME/bitwarden/clients; nvim"
 WINDOW_NAME="."
 
 ensure_command_installed nvim

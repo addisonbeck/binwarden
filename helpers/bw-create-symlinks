@@ -8,6 +8,7 @@ create_symlinks () {
   ln -s $HOME/bin/binwarden/runners/* $HOME/bin/binwarden/
   ln -s $HOME/bin/binwarden/helpers/* $HOME/bin/binwarden/
   ln -s $HOME/bin/binwarden/dev/* $HOME/bin/binwarden/
+  ln -s $HOME/bin/binwarden/testers/* $HOME/bin/binwarden/
 }
 
 create_symlinks

@@ -1,14 +1,10 @@
 #!/usr/bin/env bash
 
-if ! command -v tmux
-then
-  bw-install-tmux
-fi
+source bw-dev-core
 
-tmux has-session -t "bw-run-api" 2>/dev/null
+SESSION_PREFIX="🏃"
+SESSION_NAME="server api build"
+STARTER_COMMAND="bw-start-api"
+WINDOW_NAME="."
 
-if [ $? != 1 ]; then
-  tmux kill-session -t bw-run-api
-fi
-
-tmux new-session -d -s bw-run-api -n run 'bw-start-api'
+start_session

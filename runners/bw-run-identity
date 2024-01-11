@@ -1,14 +1,10 @@
 #!/usr/bin/env bash
 
-if ! command -v tmux
-then
-  bw-install-tmux
-fi
+source bw-dev-core
 
-tmux has-session -t "bw-run-identity" 2>/dev/null
+SESSION_PREFIX="🏃"
+SESSION_NAME="server identity build"
+STARTER_COMMAND="bw-start-identity"
+WINDOW_NAME="."
 
-if [ $? != 1 ]; then
-  tmux kill-session -t bw-run-identity
-fi
-
-tmux new-session -d -s bw-run-identity -n run 'bw-start-identity'
+start_session

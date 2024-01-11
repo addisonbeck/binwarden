@@ -1,16 +1,11 @@
 #!/usr/bin/env bash
 
-ensure_project_is_running () {
-  if ! command -v tmux
-  then
-    bw-install-tmux
-  fi
-}
+source bw-dev-core
 
-start_sessions () {
-  tmux new-session -d -s bw-dev-binwarden -n nvim "cd $HOME/bin/binwarden && nvim"
-  tmux switch-client -t bw-dev-binwarden || (start-tmux "tmux switch-client -t bw-dev-binwarden")
-}
+SESSION_PREFIX="✍️"
+SESSION_NAME="binwarden dev"
+STARTER_COMMAND="cd $HOME/bin/binwarden; nvim"
+WINDOW_NAME="."
 
-ensure_project_is_running
-start_sessions
+ensure_command_installed nvim
+start_session

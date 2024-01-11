@@ -45,11 +45,9 @@ If tmux is installed (`bw-install-tmux` will do this for you) you can run `bw-ru
 If you want to use these scripts but are unfamiliar with tmux: there are plenty of resources online, but a quick way to just see the processes in action would look something like this:
 
 1. From a terminal run `bw-run-web`.
-1. Run `tmux-ls` to see a list of active tmux sessions. You should see one for `web`, `api`, and `identity`.
-1. Run `tmux a -t bw-web` to attach to tmux session running the web vault.
-1. Use the keyboard shortcut `<Ctrl-b> d` to detach from the session. This will not exit the process, and the vault will continue to build in the background, you will just be "detached" from it.
-1. Repeat as you'd like to check in on the other sessions.
-1. Run `tmux kill-server` when you're done to shut them all down.
+1. Type `<Ctrl-b>` followed by `s` to open a list of your active tmux sessions. Select any that you want.
+1. Type `<Ctrl-b>` followed by `d` to detach from tmux. This will not exit any of the running processes, and the vault will continue to build in the background, you will just be "detached" from the tmux server.
+1. Run `tmux kill-server` from a terminal when you're done to completely quit any running tmux sessions, thus also stopping your builds.
 
 There are more elegant and quick ways to move around then this, but this is a simple way to do it.
 
