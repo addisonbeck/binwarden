@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+source $HOME/bin/binwarden/windows/windows-core clients
+source $HOME/bin/binwarden/builders/build-core directory-connector
+
+WINDOW_NAME="Build"
+STARTER_COMMAND="cd $PROJECT_PATH; npm run electron 2>&1 | tee -a $HOME/bitwarden/logs/directory-connector.log"
+
+start_container () {
+  $HOME/bin/binwarden/builders/build-ldap
+}
+
+start_web () {
+  $HOME/bin/binwarden/builders/build-web
+}
+
+start_directory_connector () {
+  start_container
+  start_web
+  start_window
+}
+
+start_directory_connector

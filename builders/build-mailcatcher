@@ -1,14 +1,12 @@
 #!/usr/bin/env bash
 
-CONTAINERNAME=bitwardenserver-storage-1
-COMPOSEPROFILENAME=storage
-LOGFILENAME=bw-docker-azurite.log
+source $HOME/bin/binwarden/sessions/session-server
 
-ensure_project_ready () {
-  if [ ! -d "$HOME/bitwarden/server" ]; then
-    bw-build-server
-  fi
+CONTAINERNAME=bitwardenserver-mail-1
+COMPOSEPROFILENAME=mail
+LOGFILENAME=bw-docker-mailcatcher.log
 
+enable_logging () {
   if [ ! -d "$HOME/bitwarden/logs" ]; then
     cd $HOME/bitwarden
     mkdir logs
@@ -19,7 +17,7 @@ ensure_project_ready () {
 }
 
 start () {
-  ensure_project_ready
+  enable_logging
   cd $HOME/bitwarden/server/dev
   if [ ! "$(docker ps | grep $CONTAINERNAME)" ]; then
     docker compose --profile $COMPOSEPROFILENAME up -d 2>&1 | tee -a $HOME/bitwarden/logs/$LOGFILENAME

@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+source $HOME/bin/binwarden/sessions/sessions-core
+
+PROJECT_PATH="$HOME/bitwarden/directory-connector/"
+SESSION_PREFIX="🛡️"
+SESSION_NAME="BW Directory Connector"
+TEST_COMMAND="npm run test:watch"
+
+ensure_repo_cloned directory-connector

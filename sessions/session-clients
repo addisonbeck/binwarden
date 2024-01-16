@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+source $HOME/bin/binwarden/sessions/sessions-core
+
+PROJECT_PATH="$HOME/bitwarden/clients/"
+SESSION_PREFIX="🛡️"
+SESSION_NAME="BW Clients"
+
+ensure_repo_cloned clients

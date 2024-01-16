@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+source $HOME/bin/binwarden/sessions/sessions-core
+
+PROJECT_PATH="$HOME/bitwarden/server/"
+SESSION_PREFIX="🛡️"
+SESSION_NAME="BW Server"
+RUN_COMMAND="dotnet run"
+TEST_COMMAND="dotnet test"
+
+ensure_repo_cloned server

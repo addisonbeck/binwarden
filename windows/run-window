@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+source $HOME/bin/binwarden/windows/windows-core ${1}
+
+WINDOW_NAME="Build ${1}"
+STARTER_COMMAND="cd ${PROJECT_PATH}; ${RUN_COMMAND}"
+
+start_window

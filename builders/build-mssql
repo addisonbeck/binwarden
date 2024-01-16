@@ -1,14 +1,12 @@
 #!/usr/bin/env bash
 
+source $HOME/bin/binwarden/sessions/session-server
+
 CONTAINERNAME=bitwardenserver-mssql-1
 COMPOSEPROFILENAME=mssql
 LOGFILENAME=bw-docker-mssql.log
 
-ensure_project_ready () {
-  if [ ! -d "$HOME/bitwarden/server" ]; then
-    bw-build-server
-  fi
-
+enable_logging () {
   if [ ! -d "$HOME/bitwarden/logs" ]; then
     cd $HOME/bitwarden
     mkdir logs
@@ -19,7 +17,7 @@ ensure_project_ready () {
 }
 
 start () {
-  ensure_project_ready
+  enable_logging
   cd $HOME/bitwarden/server/dev
   if [ ! "$(docker ps | grep $CONTAINERNAME)" ]; then
     docker compose --profile $COMPOSEPROFILENAME up -d 2>&1 | tee -a $HOME/bitwarden/logs/$LOGFILENAME

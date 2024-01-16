@@ -1,16 +1,8 @@
 #!/usr/bin/env bash
 
-ensure_project_is_running () {
-  if ! command -v tmux
-  then
-    bw-install-tmux
-  fi
-}
+source bw-dev-directory-connector
 
-start_sessions () {
-  tmux new-session -d -s bw-test-directory-connector -n test "cd $HOME/bitwarden/directory-connector && npm run test:watch"
-  tmux switch-client -t bw-test-directory-connector || (start-tmux "tmux switch-client -t bw-test-directory-connector")
-}
+STARTER_COMMAND="cd ${PROJECT_PATH}; npm run test:watch"
+WINDOW_NAME="test"
 
-ensure_project_is_running
-start_sessions
+start_window

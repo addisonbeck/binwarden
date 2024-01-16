@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+source $HOME/bin/sessions/${1}-session
+
+export WINDOW_NAME="unnamed window"
+export STARTER_COMMAND="echo 'No command specified!'"
+
+function start_window () {
+  start_session
+  if [ $? != 0 ]; then
+    log_info "Starting window \"${WINDOW_NAME}\" in session \"$(full_session_name)\""
+    tmux new-window -d -n "${WINDOW_NAME}" -t "$(full_session_name):" "${STARTER_COMMAND}"
+  fi
+}

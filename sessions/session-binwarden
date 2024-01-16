@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+source $HOME/bin/binwarden/sessions/sessions-core
+
+PROJECT_PATH="$HOME/bin/binwarden/"
+SESSION_PREFIX="🛡️"
+SESSION_NAME="BW Binwarden"

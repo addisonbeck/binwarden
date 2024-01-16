@@ -76,24 +76,29 @@ On_IWhite='\033[0;107m'   # White
 function log_info () {
   PREFIX="INFO"
   printf "${Black}${On_Blue}${PREFIX}:${Color_Off}${BBlue} ${1}${Color_Off}\\n"
-
+  log_to_file "$1"
 }
 
 function log_warning () {
   PREFIX="WARNING"
   printf "${Black}${On_Yellow}${PREFIX}:${Color_Off}${BYellow} ${1}${Color_Off}\\n"
+  log_to_file "$1"
 }
 
 function log_success () {
   PREFIX="SUCCESS"
   printf "${Black}${On_Green}${PREFIX}:${Color_Off}${BGreen} ${1}${Color_Off}\\n"
+  log_to_file "$1"
 }
 
 function log_error () {
   PREFIX="ERROR"
   printf "${Black}${On_Red}${PREFIX}:${Color_Off}${BRed} ${1}${Color_Off}\\n"
+  log_to_file "$1"
+}
 
-  mkdir -p $HOME/bin/binwarden/logs
-  [[ -f $HOME/bin/logs/error.log ]] || touch $HOME/bin/binwarden/logs/error.log
-  echo "$(date) ${PREFIX}: ${1}" >> $HOME/bin/logs/binwarden/error.log
+log_to_file () {
+  mkdir -p $HOME/bin/logs
+  [[ -f $HOME/bin/logs/log.log ]] || touch $HOME/bin/logs/log.log
+  echo "$(date) ${PREFIX}: ${1}" >> $HOME/bin/logs/log.log
 }

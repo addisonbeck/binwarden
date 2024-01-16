@@ -1,14 +1,12 @@
 #!/usr/bin/env bash
 
-CONTAINERNAME=bitwardenserver-mail-1
-COMPOSEPROFILENAME=mail
-LOGFILENAME=bw-docker-mailcatcher.log
+source $HOME/bin/binwarden/sessions/session-server
 
-ensure_project_ready () {
-  if [ ! -d "$HOME/bitwarden/server" ]; then
-    bw-build-server
-  fi
+CONTAINERNAME=bitwardenserver-open-ldap-1
+COMPOSEPROFILENAME=ldap
+LOGFILENAME=bw-docker-ldap.log
 
+enable_logging () {
   if [ ! -d "$HOME/bitwarden/logs" ]; then
     cd $HOME/bitwarden
     mkdir logs
@@ -19,9 +17,10 @@ ensure_project_ready () {
 }
 
 start () {
-  ensure_project_ready
+  enable_logging
   cd $HOME/bitwarden/server/dev
   if [ ! "$(docker ps | grep $CONTAINERNAME)" ]; then
+    curl -s --location "https://contributing.bitwarden.com/assets/files/directory-20-54a0601795a014cf9f68b11c77a6cb27.ldif" --output directory.ldif
     docker compose --profile $COMPOSEPROFILENAME up -d 2>&1 | tee -a $HOME/bitwarden/logs/$LOGFILENAME
   fi
 }

@@ -1,21 +1,21 @@
 #!/usr/bin/env bash
 
-source bw-secrets-provider
+source $HOME/bin/binwarden/secrets-managers/bw-secrets-provider
 
 DEVLICENSEBWITEMID="7123e5d3-f837-4a8c-810a-a7ca00fe1fdd"
 
 install_dependencies () {
   if ! command -v docker
   then
-    bw-install-docker
+    $HOME/bin/binwarden/installers/bw-install-docker
   fi
   if ! command -v dotnet
   then
-    bw-install-dotnet
+    $HOME/bin/binwarden/installers/bw-install-dotnet
   fi
   if ! command -v pwsh
   then
-    bw-install-powershell
+    $HOME/bin/binwarden/installers/bw-install-powershell
   fi
 
   if [[ -z "${BW_SESSION}" ]]; then
@@ -108,4 +108,4 @@ bw_build_server () {
   setup_env
 }
 
-w_build_server
+bw_build_server

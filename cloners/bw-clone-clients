@@ -3,7 +3,12 @@
 install_dependencies () {
   if ! command -v node
   then
-    bw-install-node
+    $HOME/bin/binwarden/installers/bw-install-node
+  fi
+
+  if ! command -v mkcert
+  then
+    $HOME/bin/binwarden/installers/bw-install-mkcert
   fi
 
   mkdir -p $HOME/bitwarden
@@ -22,13 +27,19 @@ install_packages () {
   npm ci
 }
 
+build_web () {
+  install_dependencies
+  mkcert -install
+  mkcert -cert-file dev-server.local.pem -key-file dev-server.local.pem localhost 127.0.0.1 bitwarden.test
+}
+
 setup_bitwarden_clients () {
   install_dependencies
   clone_repo
   cd $HOME/bitwarden/clients
   configure_git
   install_packages
+  build_web
 }
 
 setup_bitwarden_clients
-clone-web
