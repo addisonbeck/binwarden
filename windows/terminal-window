@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+source $HOME/bin/binwarden/windows/windows-core ${1}
+
+if [ $SUPPORTS_TERMINAL == false ] 
+then
+  log_error "$PROJECT_NAME does not support terminals."
+else
+  WINDOW_NAME="Terminal"
+  STARTER_COMMAND="cd ${PROJECT_PATH}; ${SHELL}"
+
+  start_window
+fi
+
+

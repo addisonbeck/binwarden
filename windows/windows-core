@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source $HOME/bin/sessions/${1}-session
+source $HOME/bin/binwarden/sessions/session-${1}
 
 export WINDOW_NAME="unnamed window"
 export STARTER_COMMAND="echo 'No command specified!'"
@@ -8,7 +8,14 @@ export STARTER_COMMAND="echo 'No command specified!'"
 function start_window () {
   start_session
   if [ $? != 0 ]; then
-    log_info "Starting window \"${WINDOW_NAME}\" in session \"$(full_session_name)\""
-    tmux new-window -d -n "${WINDOW_NAME}" -t "$(full_session_name):" "${STARTER_COMMAND}"
+    tmux has-session -t "$(full_session_name):${WINDOW_NAME}" > /dev/null 2>&1
+    if [ $? != 0 ]; then
+      log_success "Starting window \"${WINDOW_NAME}\" in session \"$(full_session_name)\""
+      tmux new-window -d -n "${WINDOW_NAME}" -t "$(full_session_name):" "${STARTER_COMMAND}"
+      return 0
+    else
+      log_error "Window \"$(full_session_name):${WINDOW_NAME}\" is already running."
+      return 1
+    fi
   fi
 }

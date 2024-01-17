@@ -2,9 +2,20 @@
 
 source $HOME/bin/binwarden/sessions/sessions-core
 
+SUPPORTS_EDITING=true
+SUPPORTS_GIT=true
+SUPPORTS_TESTING=true
+SUPPORTS_BUILDING=true
+SUPPORTS_TERMINAL=true
+
+PROJECT_NAME="Directory Connector"
+LOG_FILE_NAME="directory-connector"
 PROJECT_PATH="$HOME/bitwarden/directory-connector/"
 SESSION_PREFIX="🛡️"
 SESSION_NAME="BW Directory Connector"
 TEST_COMMAND="npm run test:watch"
+BUILD_DEPENDNENCIES=("api","identity","web")
+RUN_COMMAND=
+RUN_COMMAND="touch $HOME/bitwarden/logs/${LOG_FILE_NAME}.log; cd $PROJECT_PATH; npm run electron 2>&1 | tee $HOME/bitwarden/logs/${LOG_FILE_NAME}.log"
 
 ensure_repo_cloned directory-connector

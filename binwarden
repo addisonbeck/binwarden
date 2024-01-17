@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-COMMAND=$1
-PROJECT=$2
-$HOME/bin/commands/command-$COMMAND "$PROJECT"

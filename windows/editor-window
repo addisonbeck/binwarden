@@ -2,15 +2,21 @@
 
 source $HOME/bin/binwarden/windows/windows-core ${1}
 
-WINDOW_NAME="Editor"
-STARTER_COMMAND="cd ${PROJECT_PATH}; $EDITOR"
+if [ $SUPPORTS_EDITING == false ] 
+then
+  log_error "$PROJECT_NAME does not support editing."
+else
+  WINDOW_NAME="Editor"
+  STARTER_COMMAND="cd ${PROJECT_PATH}; $EDITOR"
 
-if [ "${EDITOR}" == "nvim" ]; then
-  ensure_command_installed nvim
-  start_window
+  if [ "${EDITOR}" == "nvim" ]; then
+    ensure_command_installed nvim
+    start_window
+  fi
+
+  if [ "${EDITOR}" == "vim" ]; then
+    ensure_command_installed vim
+    start_window
+  fi
 fi
 
-if [ "${EDITOR}" == "vim" ]; then
-  ensure_command_installed vim
-  start_window
-fi

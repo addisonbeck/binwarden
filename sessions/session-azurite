@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+CONTAINERNAME=bitwardenserver-storage-1
+COMPOSEPROFILENAME=storage
+LOGFILENAME=bw-docker-azurite.log
+SUB_PROJECT_NAME="azurite"
+SUB_PROJECT_NAME_SHORT="azurite"
+
+source $HOME/bin/binwarden/sessions/session-docker
+
+PROJECT_NAME="Azurite Container"

@@ -2,8 +2,14 @@
 
 source $HOME/bin/binwarden/windows/windows-core ${1}
 
-WINDOW_NAME="Git"
-STARTER_COMMAND="cd $PROJECT_PATH; lazygit"
+if [ $SUPPORTS_GIT == false ] 
+then
+  log_error "$PROJECT_NAME does not support git operations."
+else
+  WINDOW_NAME="Git"
+  STARTER_COMMAND="cd $PROJECT_PATH; lazygit"
 
-ensure_command_installed lazygit
-start_window
+  ensure_command_installed lazygit
+  start_window
+fi
+

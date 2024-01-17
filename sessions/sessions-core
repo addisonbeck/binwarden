@@ -1,12 +1,18 @@
 #!/usr/bin/env bash
 
-source $HOME/bin/binwarden/logger
+source $HOME/bin/binwarden/helpers/logger
 
 export PROJECT_PATH="$HOME"
 export SESSION_PREFIX="⚠️"
 export SEPARATOR_CHAR="▶"
 export SESSION_NAME="unnamed session"
 export TEST_COMMAND="none provided!"
+
+export SUPPORTS_EDITING=false
+export SUPPORTS_GIT=false
+export SUPPORTS_TESTING=false
+export SUPPORTS_BUILDING=false
+export SUPPORTS_TERMINAL=false
 
 function full_session_name () {
   printf "${SESSION_PREFIX} ${SEPARATOR_CHAR} ${SESSION_NAME}"
@@ -23,7 +29,7 @@ function kill_session_if_exists () {
 function start_session () {
   tmux has-session -t "$(full_session_name)" > /dev/null 2>&1
   if [ $? != 0 ]; then
-    log_info "Starting session \"$(full_session_name)\" with window \"${WINDOW_NAME}\""
+    log_success "Starting session \"$(full_session_name)\" with window \"${WINDOW_NAME}\""
     tmux new-session -d -s "$(full_session_name)" -n "${WINDOW_NAME}" "${STARTER_COMMAND}" > /dev/null 2>&1
     return 0
   else
@@ -37,14 +43,19 @@ function ensure_command_installed () {
   then
     log_warning  "${1} not found - it will be installed now"
     $HOME/bin/binwarden/installers/install-${1}
-  else
-    log_success "${1} detected"
+  #else
+    ## This gets a little loud
+    # log_success "${1} detected"
   fi
 }
 
 function ensure_repo_cloned () {
   if [ ! -d "$HOME/bitwarden/${1}" ]; then
+    log_warning  "${1} not found - cloning"
     $HOME/bin/binwarden/cloners/clone-${1}
+  #else
+    ## This gets a little loud
+    #log_success "${1} found"
   fi
 }
 

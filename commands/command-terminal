@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+PROJECT=$1
+$HOME/bin/binwarden/windows/terminal-window "$PROJECT"

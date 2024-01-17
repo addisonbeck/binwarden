@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+source $HOME/bin/binwarden/sessions/session-server
+
+SUPPORTS_BUILDING=true
+
+PROJECT_NAME="API"
+LOG_FILE_NAME="api"
+SUB_PROJECT_PATH="$PROJECT_PATH/src/Api"
+SUB_PROJECT_NAME="API"
+SUB_PROJECT_NAME_SHORT="A"
+RUN_COMMAND="touch $HOME/bitwarden/logs/${LOG_FILE_NAME}.log; cd $SUB_PROJECT_PATH; dotnet run 2>&1 | tee $HOME/bitwarden/logs/${LOG_FILE_NAME}.log"

@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+source $HOME/bin/binwarden/sessions/sessions-core
+
+SUPPORTS_BUILDING=true
+
+PROJECT_NAME="Docker"
+PROJECT_PATH="$HOME/bitwarden/server/dev"
+SESSION_PREFIX="🛡️"
+SESSION_NAME="BW Containers"
+RUN_COMMAND="cd $PROJECT_PATH; " \
+  "if [ ! "$(docker ps | grep $CONTAINERNAME)" ]; " \
+  "touch $HOME/bitwarden/logs/${LOGFILENAME}.log; " \
+  "then docker compose --profile ${COMPOSEPROFILENAME} | tee $HOME/bitwarden/logs/${LOGFILENAME}.log; " \
+  "fi" 
+
+ensure_repo_cloned server
+ensure_command_installed docker

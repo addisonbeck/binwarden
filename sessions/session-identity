@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+source $HOME/bin/binwarden/sessions/session-server
+
+SUPPORTS_BUILDING=true
+
+LOG_FILE_NAME="identity"
+SUB_PROJECT_PATH="$PROJECT_PATH/src/Identity"
+SUB_PROJECT_NAME="Identity"
+SUB_PROJECT_NAME_SHORT="I"
+RUN_COMMAND="touch $HOME/bitwarden/logs/${LOG_FILE_NAME}.log; cd $SUB_PROJECT_PATH; dotnet run 2>&1 | tee $HOME/bitwarden/logs/${LOG_FILE_NAME}.log"

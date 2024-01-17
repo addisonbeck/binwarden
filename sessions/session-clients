@@ -2,8 +2,15 @@
 
 source $HOME/bin/binwarden/sessions/sessions-core
 
+SUPPORTS_EDITING=true
+SUPPORTS_GIT=true
+SUPPORTS_TESTING=true
+SUPPORTS_TERMINAL=true
+
+PROJECT_NAME="Clients"
 PROJECT_PATH="$HOME/bitwarden/clients/"
 SESSION_PREFIX="🛡️"
 SESSION_NAME="BW Clients"
+TEST_COMMAND="npm run test:watch"
 
 ensure_repo_cloned clients

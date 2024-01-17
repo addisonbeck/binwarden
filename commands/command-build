@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
 
 PROJECT=$1
-$HOME/bin/binwarden/builders/build-$PROJECT
+$HOME/bin/binwarden/windows/run-window "$PROJECT"
+
