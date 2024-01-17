@@ -9,4 +9,4 @@ SUB_PROJECT_PATH="$PROJECT_PATH/apps/web"
 PROJECT_NAME="Web"
 SUB_PROJECT_NAME_SHORT="W"
 RUN_COMMAND="touch $HOME/bin/binwarden/logs/${LOG_FILE_NAME}.log; cd $SUB_PROJECT_PATH; npm run build:bit:dev:watch 2>&1 | tee $HOME/bitwarden/logs/${LOG_FILE_NAME}.log"
-BUILD_DEPENDNENCIES=("api","identity")
+BUILD_DEPS=("api" "identity")

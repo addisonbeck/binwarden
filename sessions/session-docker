@@ -9,7 +9,7 @@ PROJECT_PATH="$HOME/bitwarden/server/dev"
 SESSION_PREFIX="🛡️"
 SESSION_NAME="BW Containers"
 RUN_COMMAND="cd $PROJECT_PATH; " \
-  "if [ ! "$(docker ps | grep $CONTAINERNAME)" ]; " \
+  "if [ ! \"$(docker ps | grep $CONTAINERNAME)" ]; \" \
   "touch $HOME/bitwarden/logs/${LOGFILENAME}.log; " \
   "then docker compose --profile ${COMPOSEPROFILENAME} | tee $HOME/bitwarden/logs/${LOGFILENAME}.log; " \
   "fi" 

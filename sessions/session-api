@@ -4,9 +4,10 @@ source $HOME/bin/binwarden/sessions/session-server
 
 SUPPORTS_BUILDING=true
 
-PROJECT_NAME="API"
+PROJECT_NAME="Api"
 LOG_FILE_NAME="api"
 SUB_PROJECT_PATH="$PROJECT_PATH/src/Api"
-SUB_PROJECT_NAME="API"
-SUB_PROJECT_NAME_SHORT="A"
+SUB_PROJECT_NAME="Api"
+SUB_PROJECT_NAME_SHORT="Api"
 RUN_COMMAND="touch $HOME/bitwarden/logs/${LOG_FILE_NAME}.log; cd $SUB_PROJECT_PATH; dotnet run 2>&1 | tee $HOME/bitwarden/logs/${LOG_FILE_NAME}.log"
+BUILD_DEPS=("mssql" "mailcatcher" "azurite")
