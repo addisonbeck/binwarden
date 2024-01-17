@@ -18,7 +18,7 @@ Currently this project only works for Bitwarden employees, but open-source contr
 1. Be ready to login in to your Bitwarden company account.
 1. To install: from a terminal run the following command to clone and set up the project in `$HOME/bin/binwarden`.
     ```bash
-    curl -s https://raw.githubusercontent.com/addisonbeck/binwarden/main/cloners/bw-clone-binwarden \
+    curl -s https://raw.githubusercontent.com/addisonbeck/binwarden/main/cloners/clone-binwarden \
     --output clone-binwarden.sh && \
     bash clone-binwarden.sh
     ```
