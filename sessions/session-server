@@ -6,11 +6,13 @@ SUPPORTS_EDITING=true
 SUPPORTS_GIT=true
 SUPPORTS_TESTING=true
 SUPPORTS_TERMINAL=true
+SUPPORTS_DESTRUCTION=true
 
 PROJECT_NAME="Server"
 PROJECT_PATH="$HOME/bitwarden/server/"
 SESSION_PREFIX="🛡️"
 SESSION_NAME="BW Server"
 TEST_COMMAND="dotnet test"
+DESTROY_COMMAND="cd $PROJECT_PATH/dev; docker compose down -v *; sudo rm -rf $PROJECT_PATH"
 
 ensure_repo_cloned server

@@ -13,6 +13,7 @@ export SUPPORTS_GIT=false
 export SUPPORTS_TESTING=false
 export SUPPORTS_BUILDING=false
 export SUPPORTS_TERMINAL=false
+export SUPPORTS_DESTRUCTION=false
 
 function full_session_name () {
   printf "${SESSION_PREFIX} ${SEPARATOR_CHAR} ${SESSION_NAME}"

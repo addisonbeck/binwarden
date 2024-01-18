@@ -42,23 +42,6 @@ configure_git () {
   git config --local core.hooksPath .git-hooks
 }
 
-get_dev_license () {
-  if [ ! -z "${BINWARDEN_SESSION}" ]; then
-    login_to_bw
-  fi
-  bw get attachment dev.cer --itemid $DEVLICENSEBWITEMID --session $BINWARDEN_SESSION
-  bw get attachment dev.pfx --itemid $DEVLICENSEBWITEMID --session $BINWARDEN_SESSION
-  sudo openssl x509 -inform DER -in dev.cer -out dev.crt
-  sudo chmod 644 dev.crt
-}
-
-get_dev_license_password () {
-  if [ ! -z "${BINWARDEN_SESSION}" ]; then
-    login_to_bw
-  fi
-  echo $(bw get password $DEVLICENSEBWITEMID --session $BINWARDEN_SESSION)
-}
-
 setup_env () {
   cd dev
 
@@ -66,7 +49,7 @@ setup_env () {
   cp .env.example .env
 
   # Generating a database password
-  generate_passpharse
+  generate_passphrase
   DBPASSWORD=$OUTPUT_GENERATE_PASSPHRASE
   sed -i "s/SET_A_PASSWORD_HERE_123/$DBPASSWORD/g" .env
 
@@ -84,13 +67,12 @@ setup_env () {
   get_dev_license
 
   # Adding the pfx license to dotnet's source folder
-  LICENSEPW=$(get_dev_license_password)
+  get_dev_license_password
+  LICENSEPW=$OUTPUT_GET_DEV_LICENSE_PASSWORD
 
   pwsh -Command "using namespace System.Security.Cryptography.X509Certificates; \$store = [X509Store]::new('My', 'CurrentUser', 'ReadWrite'); \$store.Add([X509Certificate2]::new('${PWD}/dev.pfx', '${LICENSEPW}', [X509KeyStorageFlags]::PersistKeySet)); \$store.Dispose()"
 
-  bw get attachment secrets-for-env-setup.json --itemid d4195f67-dd43-4465-84d7-ae320013e6ff --session $BW_SESSION
-  mv secrets-for-env-setup.json secrets.json
-  bw get attachment additional-keys-for-cloud-services.json --itemid d4195f67-dd43-4465-84d7-ae320013e6ff --session $BW_SESSION
+  get_secrets_json
 
   sed -i "s/DB_PASSWORD/$DBPASSWORD/g" secrets.json
 

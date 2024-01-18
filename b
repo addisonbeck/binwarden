@@ -15,11 +15,12 @@ function usage () {
         Automate cloning, building, testing, and editing Bitwarden projects.
 
         OPTIONS
-          --build | -b: Start one or more tmux windows to build the project and its dependencies, cloining repos and install tooling if needed.
-          --edit  | -e: Open the project in the editor set in your \$SHELL environment variable
-          --test  | -t: Start a tmux window running project tests
-          --git   | -g: Start a tmux window with lazygit open for the project
-          --shell | -s: Start a tmux window with an empty shell in the project root
+          --build   | -b: Start one or more tmux windows to build the project and its dependencies, cloining repos and install tooling if needed.
+          --edit    | -e: Open the project in the editor set in your \$SHELL environment variable
+          --test    | -t: Start a tmux window running project tests
+          --git     | -g: Start a tmux window with lazygit open for the project
+          --shell   | -s: Start a tmux window with an empty shell in the project root
+          --destory | -d: Destory a project, deleting it from the file system and removing any specific dependencies like docker containers.
 
         EXAMPLE
           Running the command 'b -b -e -t -g -s web' will do everything needed to get Web up and ready for local testing.
@@ -82,6 +83,11 @@ function process_command () {
   then
     $HOME/bin/binwarden/commands/command-terminal "$PROJECT"
   fi
+
+  if [ $DESTROY_PROJECT ]
+  then
+    $HOME/bin/binwarden/commands/command-destory "$PROJECT"
+  fi
 }
 
 while [[ $# -gt 0 ]] 
@@ -109,6 +115,11 @@ do
 
     -s|--shell)
       OPEN_TERMINAL=true
+      shift
+      ;;
+
+    -d|--destroy)
+      DESTROY_PROJECT=true
       shift
       ;;
 

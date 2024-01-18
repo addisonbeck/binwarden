@@ -7,6 +7,7 @@ SUPPORTS_GIT=true
 SUPPORTS_TESTING=true
 SUPPORTS_BUILDING=true
 SUPPORTS_TERMINAL=true
+SUPPORTS_DESTRUCTION=true
 
 PROJECT_NAME="Directory Connector"
 LOG_FILE_NAME="directory-connector"
@@ -16,5 +17,6 @@ SESSION_NAME="BW Directory Connector"
 TEST_COMMAND="npm run test:watch"
 BUILD_DEPS=("api" "identity" "web" "ldap")
 RUN_COMMAND="touch $HOME/bitwarden/logs/${LOG_FILE_NAME}.log; cd $PROJECT_PATH; npm run electron 2>&1 | tee $HOME/bitwarden/logs/${LOG_FILE_NAME}.log"
+DESTROY_COMMAND="rm -rf $PROJECT_PATH"
 
 ensure_repo_cloned directory-connector

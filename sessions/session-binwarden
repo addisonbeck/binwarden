@@ -5,8 +5,10 @@ source $HOME/bin/binwarden/sessions/sessions-core
 SUPPORTS_EDITING=true
 SUPPORTS_GIT=true
 SUPPORTS_TERMINAL=true
+SUPPORTS_DESTRUCTION=true
 
 PROJECT_NAME="Binwarden"
 PROJECT_PATH="$HOME/bin/binwarden/"
 SESSION_PREFIX="🛡️"
 SESSION_NAME="BW Binwarden"
+DESTROY_COMMAND="rm -rf $PROJECT_PATH"
