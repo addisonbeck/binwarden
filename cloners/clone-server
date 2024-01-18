@@ -66,14 +66,15 @@ setup_env () {
   cp .env.example .env
 
   # Generating a database password
-  DBPASSWORD=$(generate_passphrase)
+  generate_passpharse
+  DBPASSWORD=$OUTPUT_GENERATE_PASSPHRASE
   sed -i "s/SET_A_PASSWORD_HERE_123/$DBPASSWORD/g" .env
 
   # Installing the Azurite tools
   pwsh -Command "Install-Module -Name Az -Scope CurrentUser -Repository PSGallery -Force"
 
-  bw-run-docker-mssql
-  bw-run-docker-azurite
+  b -b mssql
+  b -b azurite
 
   pwsh setup_azurite.ps1
 
