@@ -2,8 +2,6 @@
 
 source $HOME/bin/binwarden/secrets-managers/secrets-provider
 
-DEVLICENSEBWITEMID="7123e5d3-f837-4a8c-810a-a7ca00fe1fdd"
-
 install_dependencies () {
   if ! command -v docker
   then
@@ -18,14 +16,7 @@ install_dependencies () {
     $HOME/bin/binwarden/installers/install-pwsh
   fi
 
-  if [[ -z "${BW_SESSION}" ]]; then
-    login_to_bw
-  fi
-
-  if [ ! -d "$HOME/bitwarden" ]; then
-    cd $HOME
-    mkdir bitwarden
-  fi
+  mkdir -p $HOME/bitwarden
 }
 
 clone_repo () {
@@ -57,10 +48,11 @@ setup_env () {
   pwsh -Command "Install-Module -Name Az -Scope CurrentUser -Repository PSGallery -Force"
 
   # This is a terrible workaround to avoid creating duplicate docker networks when running these command at the same time
+  # It also gives SQL some time to get going before we run migration scripts to avoid the migrator not being able to log in
   # https://github.com/docker/compose/issues/6532
   #-------------
   b -b mssql
-  sleep 5
+  sleep 120
   b -b azurite
   #------------
 
