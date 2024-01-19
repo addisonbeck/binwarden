@@ -1,8 +1,6 @@
-# ~/bin/binwarden/🚀
+# 🪄 Binwarden - A Bitwarden development automation tool 💫
 
-This is an *experimental* project aimed at building and maintaining an easy to use installer for a full Bitwarden development environment. The officially support operating systems are the Mac, Ubuntu, and Arch Linux. That said everything may work fine on any UNIX OS as long as you are using homebrew, apt, or pacman as a package manager.
-
-This tool installs the bare minimum software for building and working with Bitwarden repositories, but can be supplemented with additional scripts for installing common but not required tools.
+This is an *experimental* cli for building, maintaining, and working in a Bitwarden development environment. The officially supported operating systems are Mac, Ubuntu, and Arch Linux. That said: everything may work fine on any UNIX OS as long as you are using homebrew, apt, or pacman as a package manager.
 
 Currently this project only works for Bitwarden employees, but open-source contributor compatibility is planned once the project is stable.
 
@@ -15,18 +13,17 @@ Currently this project only works for Bitwarden employees, but open-source contr
 ## Installation
 
 1. To prepare: ensure `$HOME/bin/binwarden` is somewhere in your `$PATH`.
-1. Be ready to login in to your Bitwarden company account.
 1. To install: from a terminal run the following command to clone and set up the project in `$HOME/bin/binwarden`.
     ```bash
     curl -s https://raw.githubusercontent.com/addisonbeck/binwarden/main/cloners/clone-binwarden \
     --output clone-binwarden.sh && \
     bash clone-binwarden.sh
     ```
-1. To use: run some scripts!
+1. To use run the following command: `b --help`
 
 ## Usage
 
-You can do a lot with these scripts. Here are some general highlights:
+You can do a lot with this tool. Here are some general highlights:
 
 ### Cloning and Scaffolding Bitwarden Projects
 
