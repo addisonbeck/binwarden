@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-source bw-dev-directory-connector
-
-STARTER_COMMAND="cd ${PROJECT_PATH}; npm run test:watch"
-WINDOW_NAME="test"
-
-start_window
