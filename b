@@ -96,6 +96,14 @@ function process_command () {
   fi
 }
 
+unset RUN_BUILD
+unset RUN_TESTS
+unset OPEN_EDITOR
+unset OPEN_GIT
+unset STOP_BUILD
+unset DESTROY_PROJECT
+unset OPEN_TERMINAL
+
 while [[ $# -gt 0 ]] 
 do
   case $1 in
@@ -154,13 +162,5 @@ do
       ;;
   esac
 done
-
-unset RUN_BUILD
-unset RUN_TESTS
-unset OPEN_EDITOR
-unset OPEN_GIT
-unset STOP_BUILD
-unset DESTROY_PROJECT
-unset OPEN_TERMINAL
 
 process_command

@@ -2,7 +2,6 @@
 
 PROJECT=$1
 
-echo $PROJECT
 if [[ "$PROJECT" == "all" ]]
 then
   read -p "This will completely delete your local environment for all projects. Are you sure? " -n 1 -r
@@ -19,6 +18,6 @@ else
   read -p "This will completely delete your local $PROJECT environment. Are you sure? " -n 1 -r
   if [[ $REPLY =~ ^[Yy]$ ]]
   then
-    # $HOME/bin/binwarden/windows/destroy-window "$PROJECT"
+    $HOME/bin/binwarden/windows/destroy-window "$PROJECT"
   fi
 fi
