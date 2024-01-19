@@ -20,7 +20,7 @@ function usage () {
           --test      | -t: Start a tmux window running project tests
           --git       | -g: Start a tmux window with lazygit open for the project
           --stop      | -s: Stops any running process for the project
-          --destory   | -d: Destory a project, deleting it from the file system and removing any specific dependencies like docker containers.
+          --destroy   | -d: Destroy a project, deleting it from the file system and removing any specific dependencies like docker containers.
           --terminal  | -x: Stops any running process for the project
 
         EXAMPLE
@@ -87,7 +87,7 @@ function process_command () {
 
   if [ $DESTROY_PROJECT ]
   then
-    $HOME/bin/binwarden/commands/command-destory "$PROJECT"
+    $HOME/bin/binwarden/commands/command-destroy "$PROJECT"
   fi
 
   if [ $STOP_BUILD ]
