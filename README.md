@@ -1,4 +1,4 @@
-# 🪄 Binwarden - A Bitwarden development automation tool 💫
+# 🪄 A Bitwarden development automation tool 💫
 
 This is an *experimental* cli for building, maintaining, and working in a Bitwarden development environment. The officially supported operating systems are Mac, Ubuntu, and Arch Linux. That said: everything may work fine on any UNIX OS as long as you are using homebrew, apt, or pacman as a package manager.
 
