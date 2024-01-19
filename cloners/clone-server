@@ -39,6 +39,22 @@ setup_env () {
   # Cloning a .env file from the template
   cp .env.example .env
 
+  echo "Getting dev license"
+  get_dev_license
+  echo "Getting dev license password"
+  get_dev_license_password
+  LICENSEPW=$OUTPUT_GET_DEV_LICENSE_PASSWORD
+
+  echo "Getting installation id"
+
+  parse_config_item_custom_field "installation-id"
+  INSTALLATIONID=$OUTPUT_PARSE_CONFIG_ITEM_CUSTOM_FIELD
+
+  echo "Getting installation key"
+  parse_config_item_custom_field "installation-key"
+  INSTALLATIONID=$OUTPUT_PARSE_CONFIG_ITEM_CUSTOM_FIELD
+
+  get_secrets_json
   # Generating a database password
   generate_passphrase
   DBPASSWORD=$OUTPUT_GENERATE_PASSPHRASE
@@ -61,20 +77,12 @@ setup_env () {
   # Running migrations scripts
   pwsh migrate.ps1
 
-  get_dev_license
-
   # Adding the pfx license to dotnet's source folder
-  get_dev_license_password
-  LICENSEPW=$OUTPUT_GET_DEV_LICENSE_PASSWORD
-
   pwsh -Command "using namespace System.Security.Cryptography.X509Certificates; \$store = [X509Store]::new('My', 'CurrentUser', 'ReadWrite'); \$store.Add([X509Certificate2]::new('${PWD}/dev.pfx', '${LICENSEPW}', [X509KeyStorageFlags]::PersistKeySet)); \$store.Dispose()"
 
-  get_secrets_json
 
   sed -i "s/DB_PASSWORD/$DBPASSWORD/g" secrets.json
 
-  INSTALLATIONID=$(parse_config_item_custom_field "installation-id")
-  INSTALLATIONKEY=$(parse_config_item_custom_field "installation-key")
   sed -i "s/INSTALLATION_ID/$INSTALLATIONID/g" secrets.json
   sed -i "s/INSTALLATION_KEY/$INSTALLATIONKEY/g" secrets.json
 
