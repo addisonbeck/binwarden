@@ -51,4 +51,3 @@ Logs for the most recent builds are also written to `$HOME/bitwarden/logs`.
 
 1. This script requires the `$GH_TOKEN` be set as an environment variable prior to use. $GH_TOKEN should be a valid Github Personal Access Token with rights to manage ssh keys on your account.
 1. This script builds an `ed25519-sk` SSH key - which is a hardware backed key. You will need a yubikey plugged in to create the key, and will need that yubikey plugged in to perform git operations. To use another key type please create, configure, and upload your key to Github manually, but understand it will not be as secure.
-1. If you've already get a dev environment set up there are still a lot of helper scripts here for building and maintaining Bitwarden projects. For example: `bw-run-web` will start `web`, `api`, and `identity` in dedicated tmux sessions.
