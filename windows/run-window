@@ -6,23 +6,25 @@ mkdir -p $HOME/bitwarden/logs
 if [ $SUPPORTS_BUILDING == false ]
 then
   log_error "$PROJECT_NAME does not support building."
-else
-  if [ -z "$SUB_PROJECT_NAME_SHORT" ]
-  then
-    WINDOW_NAME="Build"
-  else
-    WINDOW_NAME="${SUB_PROJECT_NAME_SHORT} Build"
-  fi
-
-  if [ -z "$SUB_PROJECT_PATH" ]
-  then
-    STARTER_COMMAND="cd ${PROJECT_PATH}; ${RUN_COMMAND}"
-  else
-    STARTER_COMMAND="cd ${SUB_PROJECT_PATH}; ${RUN_COMMAND}"
-  fi
-
-  for i in ${!BUILD_DEPS[@]}; do
-    b -b ${BUILD_DEPS[$i]}
-  done
-  start_window
+  exit 1
 fi
+
+if [ -z "$SUB_PROJECT_NAME_SHORT" ]
+then
+  WINDOW_NAME="Build"
+else
+  WINDOW_NAME="${SUB_PROJECT_NAME_SHORT} Build"
+fi
+
+if [ -z "$SUB_PROJECT_PATH" ]
+then
+  STARTER_COMMAND="cd ${PROJECT_PATH}; ${RUN_COMMAND}"
+else
+  STARTER_COMMAND="cd ${SUB_PROJECT_PATH}; ${RUN_COMMAND}"
+fi
+
+for i in ${!BUILD_DEPS[@]}; do
+  b -b ${BUILD_DEPS[$i]}
+done
+
+start_window

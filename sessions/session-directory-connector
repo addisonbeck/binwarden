@@ -20,3 +20,7 @@ RUN_COMMAND="touch $HOME/bitwarden/logs/${LOG_FILE_NAME}.log; cd $PROJECT_PATH; 
 DESTROY_COMMAND="rm -rf $PROJECT_PATH"
 
 ensure_repo_cloned directory-connector
+
+function stop_session () {
+  kill_session_if_exists
+}

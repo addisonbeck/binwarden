@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+source $HOME/bin/binwarden/windows/windows-core ${1}
+
+if [ $SUPPORTS_STOPPING == false ] 
+then
+  log_error "$PROJECT_NAME can't be stopped!"
+else
+  kill_session_if_exists
+fi
+
+

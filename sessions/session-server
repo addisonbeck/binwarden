@@ -13,6 +13,6 @@ PROJECT_PATH="$HOME/bitwarden/server/"
 SESSION_PREFIX="🛡️"
 SESSION_NAME="BW Server"
 TEST_COMMAND="dotnet test"
-DESTROY_COMMAND="cd $PROJECT_PATH/dev; docker compose down -v *; sudo rm -rf $PROJECT_PATH"
+DESTROY_COMMAND="cd $PROJECT_PATH/dev; docker compose down -v --remove-orphans --rmi all *; docker network prune -f; sudo rm -rf $PROJECT_PATH"
 
 ensure_repo_cloned server

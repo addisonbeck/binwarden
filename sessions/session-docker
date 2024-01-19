@@ -3,18 +3,22 @@
 source $HOME/bin/binwarden/sessions/sessions-core
 
 SUPPORTS_BUILDING=true
+SUPPORTS_DESTRCUTION=true
 
 PROJECT_NAME="Docker"
 PROJECT_PATH="$HOME/bitwarden/server/dev"
 SESSION_PREFIX="🛡️"
 SESSION_NAME="BW Containers"
+DESTROY_COMMAND="cd $PROJECT_PATH/dev; docker compose down -v --remove-orphans --rmi all ${COMPOSEPROFILENAME}; docker network prune -f"
 
-if [ ! "$(docker ps -a | grep $CONTAINERNAME)" ];
+if [ $RUN_BUILD ]
 then
-  touch $HOME/bitwarden/logs/${LOGFILENAME}
-  RUN_COMMAND="cd $PROJECT_PATH; docker compose --profile ${COMPOSEPROFILENAME} up"
+  if [ ! "$(docker ps | grep $CONTAINERNAME)" ];
+  then
+    touch $HOME/bitwarden/logs/${LOGFILENAME}
+    RUN_COMMAND="cd $PROJECT_PATH; docker compose --profile ${COMPOSEPROFILENAME} up"
+  fi
 fi
 
-echo $RUN_COMMAND
 ensure_repo_cloned server
 ensure_command_installed docker

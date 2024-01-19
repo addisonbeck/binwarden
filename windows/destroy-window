@@ -2,12 +2,16 @@
 
 source $HOME/bin/binwarden/windows/windows-core ${1}
 
-if [ $SUPPORTS_DESTROY == false ] 
+if [ ! -d "${PROJECT_PATH}" ]
 then
-  log_error "$PROJECT_NAME does not support destruction operations."
-else
-  WINDOW_NAME="Destroy"
-  STARTER_COMMAND="${DESTROY_COMMAND}; tail -f /dev/null"
-  start_window
+  exit 1
 fi
 
+if [ $SUPPORTS_DESTRUCTION == false ] 
+then
+  log_error "$PROJECT_NAME does not support destruction operations."
+  exit 1
+fi
+
+log_info "Destroying $PROJECT_NAME"
+eval "${DESTROY_COMMAND}"

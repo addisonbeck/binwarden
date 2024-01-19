@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+PROJECT=$1
+
+if [[ "$PROJECT" == "all" ]]
+then
+  $HOME/bin/binwarden/windows/stop-window "docker"
+  $HOME/bin/binwarden/windows/stop-window "server"
+  $HOME/bin/binwarden/windows/stop-window "clients"
+  $HOME/bin/binwarden/windows/stop-window "directory-connector"
+  exit 0
+fi
+
+$HOME/bin/binwarden/windows/stop-window "$PROJECT"
+

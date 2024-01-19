@@ -16,3 +16,7 @@ TEST_COMMAND="npm run test:watch"
 DESTROY_COMMAND="rm -rf $PROJECT_PATH"
 
 ensure_repo_cloned clients
+
+function stop_session () {
+  kill_session_if_exists
+}

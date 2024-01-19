@@ -14,15 +14,16 @@ export SUPPORTS_TESTING=false
 export SUPPORTS_BUILDING=false
 export SUPPORTS_TERMINAL=false
 export SUPPORTS_DESTRUCTION=false
+export SUPPORTS_STOPPING=true
 
 function full_session_name () {
   printf "${SESSION_PREFIX} ${SEPARATOR_CHAR} ${SESSION_NAME}"
 }
 
 function kill_session_if_exists () {
+  log_info "Killing session \"$(full_session_name)\""
   tmux has-session -t "$(full_session_name)" > /dev/null 2>&1
   if [ $? != 1 ]; then
-    log_warning "Session \"$(full_session_name)\" already exists and will be restarted."
     tmux kill-session -t "$(full_session_name)" > /dev/null 2>&1
   fi
 }
@@ -51,6 +52,16 @@ function ensure_command_installed () {
 }
 
 function ensure_repo_cloned () {
+  if [ $DESTROY_PROJECT ]
+  then
+    return 0
+  fi
+
+  if [ $STOP_BUILD ]
+  then
+    return 0
+  fi
+
   if [ ! -d "$HOME/bitwarden/${1}" ]; then
     log_warning  "${1} not found - cloning"
     $HOME/bin/binwarden/cloners/clone-${1}

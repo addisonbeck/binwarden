@@ -56,8 +56,13 @@ setup_env () {
   # Installing the Azurite tools
   pwsh -Command "Install-Module -Name Az -Scope CurrentUser -Repository PSGallery -Force"
 
+  # This is a terrible workaround to avoid creating duplicate docker networks when running these command at the same time
+  # https://github.com/docker/compose/issues/6532
+  #-------------
   b -b mssql
+  sleep 5
   b -b azurite
+  #------------
 
   pwsh setup_azurite.ps1
 
