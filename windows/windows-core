@@ -19,7 +19,7 @@ function start_window () {
         if [ $? -eq 0 ]; then
           success=true
         else
-          log_error "Trying "${WINDOW_NAME} again..."
+          log_error "Trying \"${WINDOW_NAME}\" again..."
           attempt_num=$(( attempt_num + 1 ))
         fi
       done

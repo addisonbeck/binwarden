@@ -105,17 +105,17 @@ do
       ;;
       
     -t|--test)
-      RUN_TESTS=true
+      export RUN_TESTS=true
       shift
       ;;
       
     -e|--edit)
-      OPEN_EDITOR=true
+      export OPEN_EDITOR=true
       shift
       ;;
 
     -g|--git)
-      OPEN_GIT=true
+      export OPEN_GIT=true
       shift
       ;;
 
@@ -130,7 +130,7 @@ do
       ;;
 
     -x|--terminal)
-      OPEN_TERMINAL=true
+      export OPEN_TERMINAL=true
       shift
       ;;
 
@@ -154,5 +154,13 @@ do
       ;;
   esac
 done
+
+unset RUN_BUILD
+unset RUN_TESTS
+unset OPEN_EDITOR
+unset OPEN_GIT
+unset STOP_BUILD
+unset DESTROY_PROJECT
+unset OPEN_TERMINAL
 
 process_command
