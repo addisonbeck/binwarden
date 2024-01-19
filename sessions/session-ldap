@@ -3,8 +3,8 @@
 CONTAINERNAME=bitwardenserver-open-ldap-1
 COMPOSEPROFILENAME=ldap
 LOGFILENAME=bw-docker-ldap.log
-SUB_PROJECT_NAME="ldap"
-SUB_PROJECT_NAME_SHORT="ldap"
+SUB_PROJECT_NAME="LDAP"
+SUB_PROJECT_NAME_SHORT="LDAP"
 
 source $HOME/bin/binwarden/sessions/session-docker
 
