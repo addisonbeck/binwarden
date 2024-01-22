@@ -24,7 +24,7 @@ else
 fi
 
 for i in ${!BUILD_DEPS[@]}; do
-  b -b ${BUILD_DEPS[$i]}
+  b -r ${BUILD_DEPS[$i]}
 
   # SQL is slow and will need a bit of a head start
   if [[ "${BUILD_DEPS[$i]}" == "MSSQL" ]]

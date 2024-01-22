@@ -10,15 +10,7 @@ PROJECT_PATH="$HOME/bitwarden/server/dev"
 SESSION_PREFIX="🛡️"
 SESSION_NAME="BW Containers"
 DESTROY_COMMAND="cd $PROJECT_PATH/dev; docker compose down -v --remove-orphans --rmi all ${COMPOSEPROFILENAME}; docker network prune -f"
-
-if [ $RUN_BUILD ]
-then
-  if [ ! "$(docker ps | grep $CONTAINERNAME)" ];
-  then
-    touch $HOME/bitwarden/logs/${LOGFILENAME}
-    RUN_COMMAND="cd $PROJECT_PATH; docker compose --profile ${COMPOSEPROFILENAME} up"
-  fi
-fi
+RUN_COMMAND="touch $HOME/biwarden/logs/${LOGFILENAME} cd $PROJECT_PATH; docker compose --profile ${COMPOSEPROFILENAME} up"
 
 ensure_repo_cloned server
 ensure_command_installed docker

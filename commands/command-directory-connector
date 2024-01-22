@@ -1,0 +1,71 @@
+#!/usr/bin/env bash
+
+while [[ $# -gt 0 ]] 
+do
+  case $1 in
+    r|run )
+      RUN="true"
+      shift
+      ;;
+
+    s|stop )
+      STOP="true"
+      shift
+      ;;
+
+    d|destroy )
+      DESTROY="true"
+      shift
+      ;;
+
+    g|git )
+      GIT="true"
+      shift
+      ;;
+
+    e|edit )
+      EDIT="true"
+      shift
+      ;;
+
+    x|terminal )
+      TERMINAL="true"
+      shift
+      ;;
+
+    *)
+      echo "Option ${1} is not supported by this command"
+      shift
+      ;;
+  esac
+done
+
+if [ -n "$RUN" ] 
+then
+  $BINWARDEN_EX_DIR/windows/run-window directory-connector
+fi
+
+if [ -n "$STOP" ] 
+then
+  $BINWARDEN_EX_DIR/windows/stop-window directory-connector
+fi
+
+if [ -n "$DESTROY" ] 
+then
+  $BINWARDEN_EX_DIR/windows/destroy-window directory-connector
+fi
+
+if [ -n "$GIT" ] 
+then
+  $BINWARDEN_EX_DIR/windows/git-window directory-connector
+fi
+
+if [ -n "$EDIT" ] 
+then
+  $BINWARDEN_EX_DIR/windows/editor-window directory-connector
+fi
+
+if [ -n "$TERMINAL" ] 
+then
+  $BINWARDEN_EX_DIR/windows/terminal-window directory-connector
+fi

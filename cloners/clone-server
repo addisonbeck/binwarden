@@ -67,9 +67,9 @@ setup_env () {
   # It also gives SQL some time to get going before we run migration scripts to avoid the migrator not being able to log in
   # https://github.com/docker/compose/issues/6532
   #-------------
-  b -b mssql
+  b -r mssql
   sleep 120
-  b -b azurite
+  b -r azurite
   #------------
 
   pwsh setup_azurite.ps1

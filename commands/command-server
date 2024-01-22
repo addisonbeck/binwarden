@@ -1,0 +1,112 @@
+#!/usr/bin/env bash
+
+while [[ $# -gt 0 ]] 
+do
+  case $1 in
+    r|run )
+      RUN="true"
+      shift
+      ;;
+
+    s|stop )
+      STOP="true"
+      shift
+      ;;
+
+    d|destroy )
+      DESTROY="true"
+      shift
+      ;;
+
+    g|git )
+      GIT="true"
+      shift
+      ;;
+
+    e|edit )
+      EDIT="true"
+      shift
+      ;;
+
+    a|api )
+      API="true"
+      shift
+      ;;
+
+    i|identity )
+      IDENTITY="true"
+      shift
+      ;;
+
+    x|terminal )
+      TERMINAL="true"
+      shift
+      ;;
+
+    *)
+      echo "Option ${1} is not supported by this command"
+      shift
+      ;;
+  esac
+done
+
+if [ -n "$API" ] 
+then
+  if [ -n "$RUN" ] 
+  then
+    $BINWARDEN_EX_DIR/windows/run-window api
+  fi
+
+  if [ -n "$STOP" ] 
+  then
+    $BINWARDEN_EX_DIR/windows/stop-window api
+  fi
+
+  if [ -n "$DESTROY" ] 
+  then
+    $BINWARDEN_EX_DIR/windows/destroy-window api
+  fi
+
+  if [ -n "$GIT" ] 
+  then
+    $BINWARDEN_EX_DIR/windows/git-window api
+  fi
+
+  if [ -n "$EDIT" ] 
+  then
+    $BINWARDEN_EX_DIR/windows/editor-window api
+  fi
+fi
+
+if [ -n "$IDENTITY" ] 
+then
+  if [ -n "$RUN" ] 
+  then
+    $BINWARDEN_EX_DIR/windows/run-window identity
+  fi
+
+  if [ -n "$STOP" ] 
+  then
+    $BINWARDEN_EX_DIR/windows/stop-window identity
+  fi
+
+  if [ -n "$DESTROY" ] 
+  then
+    $BINWARDEN_EX_DIR/windows/destroy-window identity
+  fi
+
+  if [ -n "$GIT" ] 
+  then
+    $BINWARDEN_EX_DIR/windows/git-window identity
+  fi
+
+  if [ -n "$EDIT" ] 
+  then
+    $BINWARDEN_EX_DIR/windows/editor-window identity
+  fi
+fi
+
+if [ -n "$TERMINAL" ] 
+then
+  $BINWARDEN_EX_DIR/windows/terminal-window server
+fi

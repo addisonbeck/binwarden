@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+export BINWARDEN_EX_DIR=$(dirname $0)
+
 function help () {
   echo "Usage: b [options] <project>"
 }
@@ -15,7 +17,7 @@ function usage () {
         Automate cloning, building, testing, and editing Bitwarden projects.
 
         OPTIONS
-          --build     | -b: Start one or more tmux windows to build the project and its dependencies, cloining repos and install tooling if needed.
+          --run       | -r: Start one or more tmux windows to build the project and its dependencies, cloining repos and install tooling if needed.
           --edit      | -e: Open the project in the editor set in your \$SHELL environment variable
           --test      | -t: Start a tmux window running project tests
           --git       | -g: Start a tmux window with lazygit open for the project
@@ -52,112 +54,33 @@ __EOF__
 exit 0
 }
 
-
 function process_command () {
-  if [ -z "$PROJECT" ]
+  if [ -z "$COMMAND" ]
   then
-    echo "No project specified"
-    help
+    log_error "No command specified"
+    COMMAND="help"
   fi
 
-  if [ $OPEN_EDITOR ] 
-  then
-    $HOME/bin/binwarden/commands/command-edit "$PROJECT"
-  fi
-
-  if [ $RUN_TESTS ]
-  then
-    $HOME/bin/binwarden/commands/command-test "$PROJECT"
-  fi
-
-  if [ $RUN_BUILD ]
-  then
-    $HOME/bin/binwarden/commands/command-build "$PROJECT"
-  fi
-
-  if [ $OPEN_GIT ]
-  then
-    $HOME/bin/binwarden/commands/command-git "$PROJECT"
-  fi
-
-  if [ $OPEN_TERMINAL ]
-  then
-    $HOME/bin/binwarden/commands/command-terminal "$PROJECT"
-  fi
-
-  if [ $DESTROY_PROJECT ]
-  then
-    $HOME/bin/binwarden/commands/command-destroy "$PROJECT"
-  fi
-
-  if [ $STOP_BUILD ]
-  then
-    $HOME/bin/binwarden/commands/command-stop "$PROJECT"
-  fi
+  $HOME/bin/binwarden/commands/command${COMMAND} $(echo ${ARGS[@]})
 }
 
-unset RUN_BUILD
-unset RUN_TESTS
-unset OPEN_EDITOR
-unset OPEN_GIT
-unset STOP_BUILD
-unset DESTROY_PROJECT
-unset OPEN_TERMINAL
-
+COMMAND=""
+ARGS=()
 while [[ $# -gt 0 ]] 
 do
   case $1 in
-    -b|--build)
-      export RUN_BUILD=true
-      shift
-      ;;
-      
-    -t|--test)
-      export RUN_TESTS=true
-      shift
-      ;;
-      
-    -e|--edit)
-      export OPEN_EDITOR=true
+    -? )
+      ARGS+=("${1:1:1}")
       shift
       ;;
 
-    -g|--git)
-      export OPEN_GIT=true
+    --* )
+      ARGS+=("${1:2}")
       shift
-      ;;
-
-    -s|--stop)
-      export STOP_BUILD=true
-      shift
-      ;;
-
-    -d|--destroy)
-      export DESTROY_PROJECT=true
-      shift
-      ;;
-
-    -x|--terminal)
-      export OPEN_TERMINAL=true
-      shift
-      ;;
-
-    -h|--help)
-      usage
-      ;;
-      
-    generate-github-key)
-      $HOME/bin/binwarden/commands/command-generate-github-key
-      exit 0
-      ;;
-
-    install)
-      $HOME/bin/binwarden/installers/install-${2}
-      exit 0
       ;;
 
     *)
-      PROJECT="$1"
+      COMMAND="${COMMAND}-${1}"
       shift
       ;;
   esac

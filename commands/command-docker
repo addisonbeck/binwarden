@@ -1,0 +1,129 @@
+#!/usr/bin/env bash
+
+while [[ $# -gt 0 ]] 
+do
+  case $1 in
+    r|run )
+      RUN="true"
+      shift
+      ;;
+
+    s|stop )
+      STOP="true"
+      shift
+      ;;
+
+    d|destroy )
+      DESTROY="true"
+      shift
+      ;;
+
+    l|ldap )
+      LDAP="true"
+      shift
+      ;;
+
+    q|mssql )
+      MSSQL="true"
+      shift
+      ;;
+
+    m|mailcatcher )
+      MAILCATCHER="true"
+      shift
+      ;;
+
+    a|azurite )
+      AZURITE="true"
+      shift
+      ;;
+
+    x|terminal )
+      TERMINAL="true"
+      shift
+      ;;
+
+    *)
+      echo "Option ${1} is not supported by this command"
+      shift
+      ;;
+  esac
+done
+
+
+if [ -n "$MSSQL" ] 
+then
+  if [ -n "$RUN" ] 
+  then
+    $BINWARDEN_EX_DIR/windows/run-window mssql
+  fi
+
+  if [ -n "$STOP" ] 
+  then
+    $BINWARDEN_EX_DIR/windows/stop-window mssql
+  fi
+
+  if [ -n "$DESTROY" ] 
+  then
+    $BINWARDEN_EX_DIR/windows/destroy-window mssql
+  fi
+fi
+
+if [ -n "$MAILCATCHER" ] 
+then
+  if [ -n "$RUN" ] 
+  then
+    $BINWARDEN_EX_DIR/windows/run-window mailcatcher
+  fi
+
+  if [ -n "$STOP" ] 
+  then
+    $BINWARDEN_EX_DIR/windows/stop-window mailcatcher
+  fi
+
+  if [ -n "$DESTROY" ] 
+  then
+    $BINWARDEN_EX_DIR/windows/destroy-window mailcatcher
+  fi
+fi
+
+if [ -n "$LDAP" ] 
+then
+  if [ -n "$RUN" ] 
+  then
+    $BINWARDEN_EX_DIR/windows/run-window ldap
+  fi
+
+  if [ -n "$STOP" ] 
+  then
+    $BINWARDEN_EX_DIR/windows/stop-window ldap
+  fi
+
+  if [ -n "$DESTROY" ] 
+  then
+    $BINWARDEN_EX_DIR/windows/destroy-window ldap
+  fi
+fi
+
+if [ -n "$AZURITE" ] 
+then
+  if [ -n "$RUN" ] 
+  then
+    $BINWARDEN_EX_DIR/windows/run-window azurite
+  fi
+
+  if [ -n "$STOP" ] 
+  then
+    $BINWARDEN_EX_DIR/windows/stop-window azurite
+  fi
+
+  if [ -n "$DESTROY" ] 
+  then
+    $BINWARDEN_EX_DIR/windows/destroy-window azurite
+  fi
+fi
+
+if [ -n "$TERMINAL" ] 
+then
+  $BINWARDEN_EX_DIR/windows/terminal-window docker
+fi
