@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+install_dependencies () {
+  if ! command -v node
+  then
+    $HOME/bin/binwarden/installers/bw-install-node
+  fi
+
+  mkdir -p $HOME/bitwarden
+}
+
+clone_repo () {
+  cd $HOME/bitwarden
+  git clone git@github.com:bitwarden/contributing-docs.git
+}
+
+install_packages () {
+  npm ci
+}
+
+setup_contributing_docs () {
+  install_dependencies
+  clone_repo
+  cd $HOME/bitwarden/clients
+  install_packages
+}
+
+setup_contributing_docs

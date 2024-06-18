@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+source $HOME/bin/binwarden/sessions/sessions-core
+
+SUPPORTS_EDITING=true
+SUPPORTS_GIT=true
+SUPPORTS_BUILDING=true
+SUPPORTS_TERMINAL=true
+SUPPORTS_DESTRUCTION=true
+
+PROJECT_NAME="Contributing Docs"
+LOG_FILE_NAME="contributing-docs"
+PROJECT_PATH="$HOME/bitwarden/contributing-docs/"
+SESSION_PREFIX="🛡️"
+SESSION_NAME="BW Contributing Docs"
+RUN_COMMAND="touch $HOME/bitwarden/logs/${LOG_FILE_NAME}.log; cd $PROJECT_PATH; npm start 2>&1 | tee $HOME/bitwarden/logs/${LOG_FILE_NAME}.log"
+DESTROY_COMMAND="rm -rf $PROJECT_PATH"
+
+ensure_repo_cloned contributing-docs

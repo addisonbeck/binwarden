@@ -4,9 +4,10 @@ source $HOME/bin/binwarden/sessions/session-server
 
 SUPPORTS_BUILDING=true
 
-LOG_FILE_NAME="identity"
-SUB_PROJECT_PATH="$PROJECT_PATH/src/Identity"
-SUB_PROJECT_NAME="Identity"
-SUB_PROJECT_NAME_SHORT="Identity"
+PROJECT_NAME="Admin"
+LOG_FILE_NAME="Admin"
+SUB_PROJECT_PATH="$PROJECT_PATH/src/Admin"
+SUB_PROJECT_NAME="Admin"
+SUB_PROJECT_NAME_SHORT="Admin"
 RUN_COMMAND="touch $HOME/bitwarden/logs/${LOG_FILE_NAME}.log; cd $SUB_PROJECT_PATH; dotnet watch run 2>&1 | tee $HOME/bitwarden/logs/${LOG_FILE_NAME}.log"
 BUILD_DEPS=("mssql" "mailcatcher" "azurite")

@@ -2,14 +2,9 @@
 
 source $HOME/bin/binwarden/windows/windows-core ${1}
 
-if [ $SUPPORTS_TESTING == false ] 
-then
-  log_error "$PROJECT_NAME does not support tests."
-else
-  WINDOW_NAME="Test"
-  STARTER_COMMAND="cd ${PROJECT_PATH}; ${TEST_COMMAND}"
+WINDOW_NAME="Test"
+STARTER_COMMAND="cd ${PROJECT_PATH}; ${TEST_COMMAND}"
 
-  start_window
-fi
+start_window
 
 

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+source $HOME/bin/binwarden/sessions/sessions-core
+
+SUPPORTS_EDITING=true
+SUPPORTS_TERMINAL=true
+
+PROJECT_NAME="Gowarden"
+PROJECT_PATH="$HOME/bitwarden/binwarden/"
+SESSION_PREFIX="🛡️"
+SESSION_NAME="BW Gowarden"

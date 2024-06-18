@@ -3,11 +3,6 @@
 while [[ $# -gt 0 ]] 
 do
   case $1 in
-    r|run )
-      RUN="true"
-      shift
-      ;;
-
     s|stop )
       STOP="true"
       shift
@@ -35,6 +30,11 @@ do
 
     x|terminal )
       TERMINAL="true"
+      shift
+      ;;
+
+    t|test )
+      TEST="true"
       shift
       ;;
 
@@ -76,4 +76,9 @@ fi
 if [ -n "$TERMINAL" ] 
 then
   $BINWARDEN_EX_DIR/windows/terminal-window clients
+fi
+
+if [ -n "$TEST" ] 
+then
+  $BINWARDEN_EX_DIR/windows/test-window clients
 fi
