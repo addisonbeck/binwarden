@@ -1,14 +1,14 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 
 install_dependencies () {
   if ! command -v node
   then
-    $HOME/bin/binwarden/installers/bw-install-node
+    $HOME/bin/binwarden/installers/install-node
   fi
 
   if ! command -v mkcert
   then
-    $HOME/bin/binwarden/installers/bw-install-mkcert
+    $HOME/bin/binwarden/installers/install-mkcert
   fi
 
   mkdir -p $HOME/bitwarden

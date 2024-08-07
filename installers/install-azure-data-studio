@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source platform
+source $HOME/bin/binwarden/installers/package-manager
 
 install_azure_data_studio () {
   if [[ "$PLATFORM" == "arch" ]]; then

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source bw-package-manager
+source $HOME/bin/binwarden/installers/package-manager
 
 register_microsoft_apt_repo () {
     install_package "wget apt-transport-https software-properties-common"
