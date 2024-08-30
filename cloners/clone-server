@@ -58,15 +58,15 @@ setup_env () {
   # Generating a database password
   generate_passphrase
   DBPASSWORD=$OUTPUT_GENERATE_PASSPHRASE
-  gsed -i "s/SET_A_PASSWORD_HERE_123/$DBPASSWORD/g" .env
+  sed -i "s/SET_A_PASSWORD_HERE_123/$DBPASSWORD/g" .env
 
   # Installing the Azurite tools
   pwsh -Command "Install-Module -Name Az -Scope CurrentUser -Repository PSGallery -Force"
 
-  gsed -i "s/DB_PASSWORD/$DBPASSWORD/g" secrets.json
+  sed -i "s/DB_PASSWORD/$DBPASSWORD/g" secrets.json
 
-  gsed -i "s/INSTALLATION_ID/$INSTALLATIONID/g" secrets.json
-  gsed -i "s/INSTALLATION_KEY/$INSTALLATIONKEY/g" secrets.json
+  sed -i "s/INSTALLATION_ID/$INSTALLATIONID/g" secrets.json
+  sed -i "s/INSTALLATION_KEY/$INSTALLATIONKEY/g" secrets.json
 
   pwsh setup_secrets.ps1
 
