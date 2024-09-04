@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+CONTAINERNAME=bitwardenserver-postgres-1
+COMPOSEPROFILENAME=postgres
+LOGFILENAME=bw-docker-postgres.log
+SUB_PROJECT_NAME="POSTGRES"
+SUB_PROJECT_NAME_SHORT="POSTGRES"
+
+source $HOME/bin/binwarden/sessions/session-docker
+
+PROJECT_NAME="Postgres Container"

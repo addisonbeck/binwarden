@@ -38,6 +38,26 @@ do
       shift
       ;;
 
+    m|mssql )
+      MSSQL="true"
+      shift
+      ;;
+
+    my|mysql )
+      MYSQL="true"
+      shift
+      ;;
+
+    p|postgres )
+      POSTGRES="true"
+      shift
+      ;;
+
+    s|sqlite )
+      SQLLITE="true"
+      shift
+      ;;
+
     x|terminal )
       TERMINAL="true"
       shift
@@ -103,6 +123,78 @@ then
   if [ -n "$EDIT" ] 
   then
     $BINWARDEN_EX_DIR/windows/editor-window identity
+  fi
+fi
+
+if [ -n "$MSSQL" ] 
+then
+  if [ -n "$RUN" ] 
+  then
+    $BINWARDEN_EX_DIR/windows/run-window mssql
+  fi
+
+  if [ -n "$STOP" ] 
+  then
+    $BINWARDEN_EX_DIR/windows/stop-window mssql
+  fi
+
+  if [ -n "$DESTROY" ] 
+  then
+    $BINWARDEN_EX_DIR/windows/destroy-window mssql
+  fi
+fi
+
+if [ -n "$MYSQL" ] 
+then
+  if [ -n "$RUN" ] 
+  then
+    $BINWARDEN_EX_DIR/windows/run-window mysql
+  fi
+
+  if [ -n "$STOP" ] 
+  then
+    $BINWARDEN_EX_DIR/windows/stop-window mysql
+  fi
+
+  if [ -n "$DESTROY" ] 
+  then
+    $BINWARDEN_EX_DIR/windows/destroy-window mysql
+  fi
+fi
+
+if [ -n "$POSTGRES" ] 
+then
+  if [ -n "$RUN" ] 
+  then
+    $BINWARDEN_EX_DIR/windows/run-window postgres
+  fi
+
+  if [ -n "$STOP" ] 
+  then
+    $BINWARDEN_EX_DIR/windows/stop-window postgres
+  fi
+
+  if [ -n "$DESTROY" ] 
+  then
+    $BINWARDEN_EX_DIR/windows/destroy-window postgres
+  fi
+fi
+
+if [ -n "$SQLITE" ] 
+then
+  if [ -n "$RUN" ] 
+  then
+    $BINWARDEN_EX_DIR/windows/run-window sqlite
+  fi
+
+  if [ -n "$STOP" ] 
+  then
+    $BINWARDEN_EX_DIR/windows/stop-window sqlite
+  fi
+
+  if [ -n "$DESTROY" ] 
+  then
+    $BINWARDEN_EX_DIR/windows/destroy-window sqlite
   fi
 fi
 

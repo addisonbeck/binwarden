@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+CONTAINERNAME=bw-mysql
+COMPOSEPROFILENAME=mysql
+LOGFILENAME=bw-docker-mysql.log
+SUB_PROJECT_NAME="MYSQL"
+SUB_PROJECT_NAME_SHORT="MYSQL"
+
+source $HOME/bin/binwarden/sessions/session-docker
+
+PROJECT_NAME="MSSQL Container"

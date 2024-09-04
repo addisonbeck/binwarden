@@ -67,6 +67,7 @@ setup_env () {
 
   sed -i "s/INSTALLATION_ID/$INSTALLATIONID/g" secrets.json
   sed -i "s/INSTALLATION_KEY/$INSTALLATIONKEY/g" secrets.json
+  sed -i "s/path\/to\/bitwardenServer\/repository\/server\/dev\/db\/bitwarden.sqlite/$(pwd)/bitwarden.sqlite" secrets.json
 
   pwsh setup_secrets.ps1
 
@@ -74,15 +75,15 @@ setup_env () {
   # It also gives SQL some time to get going before we run migration scripts to avoid the migrator not being able to log in
   # https://github.com/docker/compose/issues/6532
   #-------------
-  b -r mssql
+  b server -r --mssql --mysql --postgres
   sleep 120
-  b -r azurite
+  b server -r azurite
   #------------
 
   pwsh setup_azurite.ps1
 
   # Running migrations scripts
-  pwsh migrate.ps1
+  pwsh migrate.ps1 --all
 
   # Adding the pfx license to dotnet's source folder
   pwsh -Command "using namespace System.Security.Cryptography.X509Certificates; \$store = [X509Store]::new('My', 'CurrentUser', 'ReadWrite'); \$store.Add([X509Certificate2]::new('${PWD}/dev.pfx', '${LICENSEPW}', [X509KeyStorageFlags]::PersistKeySet)); \$store.Dispose()"
