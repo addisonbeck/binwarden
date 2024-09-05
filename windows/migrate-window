@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+source $HOME/bin/binwarden/windows/windows-core ${1}
+
+mkdir -p $HOME/bitwarden/logs
+if [ $SUPPORTS_MIGRATING == false ]
+then
+  log_error "$PROJECT_NAME does not support migrating."
+  exit 1
+fi
+
+if [ -z "$SUB_PROJECT_NAME_SHORT" ]
+then
+  WINDOW_NAME="Migrate"
+else
+  WINDOW_NAME="${SUB_PROJECT_NAME_SHORT} Migrate"
+fi
+
+STARTER_COMMAND="touch $HOME/bitwarden/logs/${LOGFILENAME}-migration.log; cd ${MIGRATE_PATH}; ${MIGRATE_COMMAND} 2>&1 | tee $HOME/bitwarden/logs/${LOG_FILE_NAME}-migration.log"
+touch $HOME/birwarden/logs/${LOGFILENAME}
+
+for i in ${!BUILD_DEPS[@]}; do
+  b -r ${BUILD_DEPS[$i]}
+
+  # SQL is slow and will need a bit of a head start
+  if [[ "${BUILD_DEPS[$i]}" == "MSSQL" ]]
+  then
+    sleep 30
+  fi
+done
+
+start_window

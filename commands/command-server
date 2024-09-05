@@ -38,7 +38,12 @@ do
       shift
       ;;
 
-    m|mssql )
+    m|migrate )
+      MIGRATE = "true"
+      shift
+      ;;
+
+    ms|mssql )
       MSSQL="true"
       shift
       ;;
@@ -142,6 +147,11 @@ then
   then
     $BINWARDEN_EX_DIR/windows/destroy-window mssql
   fi
+
+  if [ -n "$MIGRATE" ] 
+  then
+    $BINWARDEN_EX_DIR/windows/migrate-window mssql
+  fi
 fi
 
 if [ -n "$MYSQL" ] 
@@ -159,6 +169,11 @@ then
   if [ -n "$DESTROY" ] 
   then
     $BINWARDEN_EX_DIR/windows/destroy-window mysql
+  fi
+
+  if [ -n "$MIGRATE" ] 
+  then
+    $BINWARDEN_EX_DIR/windows/migrate-window mysql
   fi
 fi
 
@@ -182,19 +197,9 @@ fi
 
 if [ -n "$SQLITE" ] 
 then
-  if [ -n "$RUN" ] 
+  if [ -n "$MIGRATE" ] 
   then
-    $BINWARDEN_EX_DIR/windows/run-window sqlite
-  fi
-
-  if [ -n "$STOP" ] 
-  then
-    $BINWARDEN_EX_DIR/windows/stop-window sqlite
-  fi
-
-  if [ -n "$DESTROY" ] 
-  then
-    $BINWARDEN_EX_DIR/windows/destroy-window sqlite
+    $BINWARDEN_EX_DIR/windows/migrate-window sqlite
   fi
 fi
 
@@ -202,3 +207,4 @@ if [ -n "$TERMINAL" ]
 then
   $BINWARDEN_EX_DIR/windows/terminal-window server
 fi
+
