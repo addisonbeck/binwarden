@@ -4,7 +4,7 @@ source $HOME/bin/binwarden/sessions/session-server
 
 CONTAINERNAME=bw-mysql
 COMPOSEPROFILENAME=mysql
-LOGFILENAME=bw-docker-mysql.log
+LOG_FILE_NAME=bw-docker-mysql.log
 SUB_PROJECT_NAME="MYSQL"
 SUB_PROJECT_NAME_SHORT="MYSQL"
 MIGRATE_PATH="$PROJECT_PATH/dev"

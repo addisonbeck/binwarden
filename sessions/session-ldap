@@ -2,7 +2,7 @@
 
 CONTAINERNAME=bitwardenserver-open-ldap-1
 COMPOSEPROFILENAME=ldap
-LOGFILENAME=bw-docker-ldap.log
+LOG_FILE_NAME=bw-docker-ldap.log
 SUB_PROJECT_NAME="LDAP"
 SUB_PROJECT_NAME_SHORT="LDAP"
 

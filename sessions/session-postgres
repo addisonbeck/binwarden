@@ -4,7 +4,7 @@ source $HOME/bin/binwarden/sessions/session-server
 
 CONTAINERNAME=bitwardenserver-postgres-1
 COMPOSEPROFILENAME=postgres
-LOGFILENAME=bw-docker-postgres.log
+LOG_FILE_NAME=bw-docker-postgres.log
 SUB_PROJECT_NAME="POSTGRES"
 SUB_PROJECT_NAME_SHORT="POSTGRES"
 MIGRATE_PATH="$PROJECT_PATH/dev"

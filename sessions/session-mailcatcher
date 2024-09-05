@@ -2,7 +2,7 @@
 
 CONTAINERNAME=bitwardenserver-mail-1
 COMPOSEPROFILENAME=mail
-LOGFILENAME=bw-docker-mailcatcher.log
+LOG_FILE_NAME=bw-docker-mailcatcher.log
 SUB_PROJECT_NAME="Mailcatcher"
 SUB_PROJECT_NAME_SHORT="Mail"
 

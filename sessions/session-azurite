@@ -2,7 +2,7 @@
 
 CONTAINERNAME=bitwardenserver-storage-1
 COMPOSEPROFILENAME=storage
-LOGFILENAME=bw-docker-azurite.log
+LOG_FILE_NAME=bw-docker-azurite.log
 SUB_PROJECT_NAME="Azurite"
 SUB_PROJECT_NAME_SHORT="Azurite"
 

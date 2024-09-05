@@ -16,8 +16,7 @@ else
   WINDOW_NAME="${SUB_PROJECT_NAME_SHORT} Migrate"
 fi
 
-STARTER_COMMAND="touch $HOME/bitwarden/logs/${LOGFILENAME}-migration.log; cd ${MIGRATE_PATH}; ${MIGRATE_COMMAND} 2>&1 | tee $HOME/bitwarden/logs/${LOG_FILE_NAME}-migration.log"
-touch $HOME/birwarden/logs/${LOGFILENAME}
+STARTER_COMMAND="touch $HOME/bitwarden/logs/${LOG_FILE_NAME}-migration.log; cd ${MIGRATE_PATH}; ${MIGRATE_COMMAND} 2>&1 | tee $HOME/bitwarden/logs/${LOG_FILE_NAME}-migration.log"
 
 for i in ${!BUILD_DEPS[@]}; do
   b -r ${BUILD_DEPS[$i]}
