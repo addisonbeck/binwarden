@@ -68,6 +68,21 @@ do
       shift
       ;;
 
+    a|api )
+      API="true"
+      shift
+      ;;
+
+    i|identity )
+      IDENTITY="true"
+      shift
+      ;;
+
+    admin )
+      ADMIN="true"
+      shift
+      ;;
+
     *)
       echo "Option ${1} is not supported by this command"
       shift
@@ -108,6 +123,24 @@ then
   if [ -n "$DESTROY" ] 
   then
     $BINWARDEN_EX_DIR/windows/destroy-window identity
+  fi
+fi
+
+if [ -n "$ADMIN" ] 
+then
+  if [ -n "$RUN" ] 
+  then
+    $BINWARDEN_EX_DIR/windows/run-window admin-portal
+  fi
+
+  if [ -n "$STOP" ] 
+  then
+    $BINWARDEN_EX_DIR/windows/stop-window admin-portal
+  fi
+
+  if [ -n "$DESTROY" ] 
+  then
+    $BINWARDEN_EX_DIR/windows/destroy-window admin-portal
   fi
 fi
 
