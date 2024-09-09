@@ -91,16 +91,6 @@ then
   then
     $BINWARDEN_EX_DIR/windows/destroy-window api
   fi
-
-  if [ -n "$GIT" ] 
-  then
-    $BINWARDEN_EX_DIR/windows/git-window api
-  fi
-
-  if [ -n "$EDIT" ] 
-  then
-    $BINWARDEN_EX_DIR/windows/editor-window api
-  fi
 fi
 
 if [ -n "$IDENTITY" ] 
@@ -119,16 +109,16 @@ then
   then
     $BINWARDEN_EX_DIR/windows/destroy-window identity
   fi
+fi
 
-  if [ -n "$GIT" ] 
-  then
-    $BINWARDEN_EX_DIR/windows/git-window identity
-  fi
+if [ -n "$EDIT" ] 
+then
+    $BINWARDEN_EX_DIR/windows/editor-window server
+fi
 
-  if [ -n "$EDIT" ] 
-  then
-    $BINWARDEN_EX_DIR/windows/editor-window identity
-  fi
+if [ -n "$GIT" ] 
+then
+  $BINWARDEN_EX_DIR/windows/git-window server
 fi
 
 if [ -n "$MSSQL" ] 
