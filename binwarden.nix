@@ -15,4 +15,8 @@ in stdenv.mkDerivation {
   installPhase = ''
     cp -r $src $out
   '';
+
+  postFixup = ''
+     wrapProgram $out/bin/b --prefix PATH : $out/bin
+  '';
 }
