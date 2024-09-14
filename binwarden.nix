@@ -3,7 +3,7 @@
 let version = "0.0.1";
 in stdenv.mkDerivation {
 
-  name = "binwarden-${version}";
+  name = "d-${version}";
 
   src = ./src;
 
@@ -13,10 +13,12 @@ in stdenv.mkDerivation {
   buildPhase = "";
 
   installPhase = ''
-    cp -r $src $out
+    mkdir -p $out/binwarden/
+    cp -r $src $out/binwarden
+    install -D $src/bin/b $out/binwarden/bin/b
   '';
 
   postFixup = ''
-     wrapProgram $out/bin/b --prefix PATH : $out/bin
+     wrapProgram $out/binwarden/bin/b --prefix PATH : $out/bin
   '';
 }
