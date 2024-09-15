@@ -11,7 +11,7 @@ in stdenv.mkDerivation {
 
   installPhase = ''
     mkdir -p $out/bin
-    cp -r $src/lib $out/
+    cp -r $src/d $out/
     install -D $src/bin/binwarden $out/bin
   '';
 }
