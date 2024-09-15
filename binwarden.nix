@@ -16,6 +16,6 @@ in stdenv.mkDerivation {
 
   postInstall = ''
     mkdir -p $out/bin
-    ln -fs "$out/binwarden/bin/b" $out/bin/b
+    ln -fs "$out/binwarden/bin/binwarden" $out/bin/binwarden
   '';
 }
