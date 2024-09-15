@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source $HOME/bin/binwarden/helpers/logger
+source $APPLICATION_LIB_DIR/helpers/logger
 
 export PROJECT_PATH="$HOME"
 export SESSION_PREFIX="⚠️"
@@ -44,7 +44,7 @@ function ensure_command_installed () {
   if ! command -v ${1} > /dev/null 2>&1
   then
     log_warning  "${1} not found - it will be installed now"
-    $HOME/bin/binwarden/installers/install-${1}
+    $APPLICATION_LIB_DIR/installers/install-${1}
   #else
     ## This gets a little loud
     # log_success "${1} detected"
@@ -64,7 +64,7 @@ function ensure_repo_cloned () {
 
   if [ ! -d "$HOME/bitwarden/${1}" ]; then
     log_warning  "${1} not found - cloning"
-    $HOME/bin/binwarden/cloners/clone-${1}
+    $APPLICATION_LIB_DIR/cloners/clone-${1}
   #else
     ## This gets a little loud
     #log_success "${1} found"

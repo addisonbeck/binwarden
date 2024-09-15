@@ -6,6 +6,6 @@ LOG_FILE_NAME=bw-docker-mailcatcher.log
 SUB_PROJECT_NAME="Mailcatcher"
 SUB_PROJECT_NAME_SHORT="Mail"
 
-source $HOME/bin/binwarden/sessions/session-docker
+source $APPLICATION_LIB_DIR/sessions/session-docker
 
 PROJECT_NAME="Mailcatcher Container"

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source $HOME/bin/binwarden/sessions/session-server
+source $APPLICATION_LIB_DIR/sessions/session-server
 
 CONTAINERNAME=bw-mysql
 COMPOSEPROFILENAME=mysql
@@ -10,6 +10,6 @@ SUB_PROJECT_NAME_SHORT="MYSQL"
 MIGRATE_PATH="$PROJECT_PATH/dev"
 MIGRATE_COMMAND="pwsh migrate.ps1 --mysql"
 
-source $HOME/bin/binwarden/sessions/session-docker
+source $APPLICATION_LIB_DIR/sessions/session-docker
 
 PROJECT_NAME="MSSQL Container"

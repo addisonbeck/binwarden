@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source $HOME/bin/binwarden/sessions/session-server
+source $APPLICATION_LIB_DIR/sessions/session-server
 
 SUPPORTS_BUILDING=true
 

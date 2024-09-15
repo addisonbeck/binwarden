@@ -22,10 +22,10 @@ done
 
 if [ -n "$EDIT" ] 
 then
-  $BINWARDEN_EX_DIR/windows/editor-window gowarden
+  $APPLICATION_LIB_DIR/windows/editor-window gowarden
 fi
 
 if [ -n "$TERMINAL" ] 
 then
-  $BINWARDEN_EX_DIR/windows/terminal-window gowarden
+  $APPLICATION_LIB_DIR/windows/terminal-window gowarden
 fi

@@ -6,6 +6,6 @@ LOG_FILE_NAME=bw-docker-azurite.log
 SUB_PROJECT_NAME="Azurite"
 SUB_PROJECT_NAME_SHORT="Azurite"
 
-source $HOME/bin/binwarden/sessions/session-docker
+source $APPLICATION_LIB_DIR/sessions/session-docker
 
 PROJECT_NAME="Azurite Container"

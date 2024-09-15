@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source $HOME/bin/binwarden/sessions/session-server
+source $APPLICATION_LIB_DIR/sessions/session-server
 
 CONTAINERNAME=bitwardenserver-mssql-1
 COMPOSEPROFILENAME=mssql
@@ -10,6 +10,6 @@ SUB_PROJECT_NAME_SHORT="MSSQL"
 MIGRATE_PATH="$PROJECT_PATH/dev"
 MIGRATE_COMMAND="pwsh migrate.ps1 --mssql"
 
-source $HOME/bin/binwarden/sessions/session-docker
+source $APPLICATION_LIB_DIR/sessions/session-docker
 
 PROJECT_NAME="MSSQL Container"

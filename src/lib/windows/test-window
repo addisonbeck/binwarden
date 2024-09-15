@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source $HOME/bin/binwarden/windows/windows-core ${1}
+source $APPLICATION_LIB_DIR/windows/windows-core ${1}
 
 WINDOW_NAME="Test"
 STARTER_COMMAND="cd ${PROJECT_PATH}; ${TEST_COMMAND}"

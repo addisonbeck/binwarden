@@ -2,7 +2,7 @@
 
 while [[ $# -gt 0 ]] 
 do
-  case $1 in
+  case ${1} in
     r|run )
       RUN="true"
       shift
@@ -28,11 +28,6 @@ do
       shift
       ;;
 
-    x|terminal )
-      TERMINAL="true"
-      shift
-      ;;
-
     *)
       echo "Option ${1} is not supported by this command"
       shift
@@ -40,34 +35,27 @@ do
   esac
 done
 
-PROJECT_KEY="contributing-docs"
-
 if [ -n "$RUN" ] 
 then
-  $BINWARDEN_EX_DIR/windows/run-window $PROJECT_KEY
+  $APPLICATION_LIB_DIR/windows/run-window web
 fi
 
 if [ -n "$STOP" ] 
 then
-  $BINWARDEN_EX_DIR/windows/stop-window $PROJECT_KEY
+  $APPLICATION_LIB_DIR/windows/stop-window web
 fi
 
 if [ -n "$DESTROY" ] 
 then
-  $BINWARDEN_EX_DIR/windows/destroy-window $PROJECT_KEY
+  $APPLICATION_LIB_DIR/windows/destroy-window web
 fi
 
 if [ -n "$GIT" ] 
 then
-  $BINWARDEN_EX_DIR/windows/git-window $PROJECT_KEY
+  $APPLICATION_LIB_DIR/windows/git-window web
 fi
 
 if [ -n "$EDIT" ] 
 then
-  $BINWARDEN_EX_DIR/windows/editor-window $PROJECT_KEY
-fi
-
-if [ -n "$TERMINAL" ] 
-then
-  $BINWARDEN_EX_DIR/windows/terminal-window contributing-docs
+  $APPLICATION_LIB_DIR/windows/editor-window web
 fi

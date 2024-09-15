@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source $HOME/bin/binwarden/sessions/sessions-core
+source $APPLICATION_LIB_DIR/sessions/sessions-core
 
 SUPPORTS_EDITING=true
 SUPPORTS_GIT=true

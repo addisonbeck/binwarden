@@ -17,7 +17,6 @@ do
       DESTROY="true"
       shift
       ;;
-
     *)
       echo "Option ${1} is not supported by this command"
       shift
@@ -27,15 +26,15 @@ done
 
 if [ -n "$RUN" ] 
 then
-  $BINWARDEN_EX_DIR/windows/run-window azurite
+  $APPLICATION_LIB_DIR/windows/run-window api
 fi
 
 if [ -n "$STOP" ] 
 then
-  $BINWARDEN_EX_DIR/windows/stop-window azurite
+  $APPLICATION_LIB_DIR/windows/stop-window api
 fi
 
 if [ -n "$DESTROY" ] 
 then
-  $BINWARDEN_EX_DIR/windows/destroy-window azurite
+  $APPLICATION_LIB_DIR/windows/destroy-window api
 fi

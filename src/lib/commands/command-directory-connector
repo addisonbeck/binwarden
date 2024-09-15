@@ -47,35 +47,35 @@ done
 
 if [ -n "$RUN" ] 
 then
-  $BINWARDEN_EX_DIR/windows/run-window directory-connector
+  $APPLICATION_LIB_DIR/windows/run-window directory-connector
 fi
 
 if [ -n "$STOP" ] 
 then
-  $BINWARDEN_EX_DIR/windows/stop-window directory-connector
+  $APPLICATION_LIB_DIR/windows/stop-window directory-connector
 fi
 
 if [ -n "$DESTROY" ] 
 then
-  $BINWARDEN_EX_DIR/windows/destroy-window directory-connector
+  $APPLICATION_LIB_DIR/windows/destroy-window directory-connector
 fi
 
 if [ -n "$GIT" ] 
 then
-  $BINWARDEN_EX_DIR/windows/git-window directory-connector
+  $APPLICATION_LIB_DIR/windows/git-window directory-connector
 fi
 
 if [ -n "$EDIT" ] 
 then
-  $BINWARDEN_EX_DIR/windows/editor-window directory-connector
+  $APPLICATION_LIB_DIR/windows/editor-window directory-connector
 fi
 
 if [ -n "$TERMINAL" ] 
 then
-  $BINWARDEN_EX_DIR/windows/terminal-window directory-connector
+  $APPLICATION_LIB_DIR/windows/terminal-window directory-connector
 fi
 
 if [ -n "$TEST" ] 
 then
-  $BINWARDEN_EX_DIR/windows/test-window directory-connector
+  $APPLICATION_LIB_DIR/windows/test-window directory-connector
 fi

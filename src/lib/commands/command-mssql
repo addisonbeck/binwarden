@@ -27,15 +27,15 @@ done
 
 if [ -n "$RUN" ] 
 then
-  $BINWARDEN_EX_DIR/windows/run-window mailcatcher
+  $APPLICATION_LIB_DIR/windows/run-window mssql
 fi
 
 if [ -n "$STOP" ] 
 then
-  $BINWARDEN_EX_DIR/windows/stop-window mailcatcher
+  $APPLICATION_LIB_DIR/windows/stop-window mssql
 fi
 
 if [ -n "$DESTROY" ] 
 then
-  $BINWARDEN_EX_DIR/windows/destroy-window mailcatcher
+  $APPLICATION_LIB_DIR/windows/destroy-window mssql
 fi

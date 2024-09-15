@@ -17,6 +17,7 @@ do
       DESTROY="true"
       shift
       ;;
+
     *)
       echo "Option ${1} is not supported by this command"
       shift
@@ -26,15 +27,15 @@ done
 
 if [ -n "$RUN" ] 
 then
-  $BINWARDEN_EX_DIR/windows/run-window api
+  $APPLICATION_LIB_DIR/windows/run-window mailcatcher
 fi
 
 if [ -n "$STOP" ] 
 then
-  $BINWARDEN_EX_DIR/windows/stop-window api
+  $APPLICATION_LIB_DIR/windows/stop-window mailcatcher
 fi
 
 if [ -n "$DESTROY" ] 
 then
-  $BINWARDEN_EX_DIR/windows/destroy-window api
+  $APPLICATION_LIB_DIR/windows/destroy-window mailcatcher
 fi

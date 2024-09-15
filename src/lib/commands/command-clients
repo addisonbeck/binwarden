@@ -49,36 +49,36 @@ if [ -n "$WEB" ]
 then
   if [ -n "$RUN" ] 
   then
-    $BINWARDEN_EX_DIR/windows/run-window web
+    $APPLICATION_LIB_DIR/windows/run-window web
   fi
 
   if [ -n "$STOP" ] 
   then
-    $BINWARDEN_EX_DIR/windows/stop-window web
+    $APPLICATION_LIB_DIR/windows/stop-window web
   fi
 
   if [ -n "$DESTROY" ] 
   then
-    $BINWARDEN_EX_DIR/windows/destroy-window web
+    $APPLICATION_LIB_DIR/windows/destroy-window web
   fi
 
   if [ -n "$GIT" ] 
   then
-    $BINWARDEN_EX_DIR/windows/git-window web
+    $APPLICATION_LIB_DIR/windows/git-window web
   fi
 
   if [ -n "$EDIT" ] 
   then
-    $BINWARDEN_EX_DIR/windows/editor-window web
+    $APPLICATION_LIB_DIR/windows/editor-window web
   fi
 fi
 
 if [ -n "$TERMINAL" ] 
 then
-  $BINWARDEN_EX_DIR/windows/terminal-window clients
+  $APPLICATION_LIB_DIR/windows/terminal-window clients
 fi
 
 if [ -n "$TEST" ] 
 then
-  $BINWARDEN_EX_DIR/windows/test-window clients
+  $APPLICATION_LIB_DIR/windows/test-window clients
 fi

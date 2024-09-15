@@ -27,15 +27,15 @@ done
 
 if [ -n "$GIT" ] 
 then
-  $BINWARDEN_EX_DIR/windows/git-window binwarden
+  $APPLICATION_LIB_DIR/windows/git-window binwarden
 fi
 
 if [ -n "$EDIT" ] 
 then
-  $BINWARDEN_EX_DIR/windows/editor-window binwarden
+  $APPLICATION_LIB_DIR/windows/editor-window binwarden
 fi
 
 if [ -n "$TERMINAL" ] 
 then
-  $BINWARDEN_EX_DIR/windows/terminal-window binwarden
+  $APPLICATION_LIB_DIR/windows/terminal-window binwarden
 fi

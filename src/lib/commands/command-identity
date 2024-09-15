@@ -28,15 +28,15 @@ done
 
 if [ -n "$RUN" ] 
 then
-  $BINWARDEN_EX_DIR/windows/run-window identity
+  $APPLICATION_LIB_DIR/windows/run-window identity
 fi
 
 if [ -n "$STOP" ] 
 then
-  $BINWARDEN_EX_DIR/windows/stop-window identity
+  $APPLICATION_LIB_DIR/windows/stop-window identity
 fi
 
 if [ -n "$DESTROY" ] 
 then
-  $BINWARDEN_EX_DIR/windows/destroy-window identity
+  $APPLICATION_LIB_DIR/windows/destroy-window identity
 fi

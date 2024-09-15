@@ -6,6 +6,6 @@ LOG_FILE_NAME=bw-docker-ldap.log
 SUB_PROJECT_NAME="LDAP"
 SUB_PROJECT_NAME_SHORT="LDAP"
 
-source $HOME/bin/binwarden/sessions/session-docker
+source $APPLICATION_LIB_DIR/sessions/session-docker
 
 PROJECT_NAME="LDAP Container"

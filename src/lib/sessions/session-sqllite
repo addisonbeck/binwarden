@@ -6,6 +6,6 @@ LOG_FILE_NAME=bw-docker-postgres.log
 SUB_PROJECT_NAME="POSTGRES"
 SUB_PROJECT_NAME_SHORT="POSTGRES"
 
-source $HOME/bin/binwarden/sessions/session-docker
+source $APPLICATION_LIB_DIR/sessions/session-docker
 
 PROJECT_NAME="Postgres Container"

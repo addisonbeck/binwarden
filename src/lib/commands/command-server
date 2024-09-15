@@ -94,17 +94,17 @@ if [ -n "$API" ]
 then
   if [ -n "$RUN" ] 
   then
-    $BINWARDEN_EX_DIR/windows/run-window api
+    $APPLICATION_LIB_DIR/windows/run-window api
   fi
 
   if [ -n "$STOP" ] 
   then
-    $BINWARDEN_EX_DIR/windows/stop-window api
+    $APPLICATION_LIB_DIR/windows/stop-window api
   fi
 
   if [ -n "$DESTROY" ] 
   then
-    $BINWARDEN_EX_DIR/windows/destroy-window api
+    $APPLICATION_LIB_DIR/windows/destroy-window api
   fi
 fi
 
@@ -112,17 +112,17 @@ if [ -n "$IDENTITY" ]
 then
   if [ -n "$RUN" ] 
   then
-    $BINWARDEN_EX_DIR/windows/run-window identity
+    $APPLICATION_LIB_DIR/windows/run-window identity
   fi
 
   if [ -n "$STOP" ] 
   then
-    $BINWARDEN_EX_DIR/windows/stop-window identity
+    $APPLICATION_LIB_DIR/windows/stop-window identity
   fi
 
   if [ -n "$DESTROY" ] 
   then
-    $BINWARDEN_EX_DIR/windows/destroy-window identity
+    $APPLICATION_LIB_DIR/windows/destroy-window identity
   fi
 fi
 
@@ -130,50 +130,50 @@ if [ -n "$ADMIN" ]
 then
   if [ -n "$RUN" ] 
   then
-    $BINWARDEN_EX_DIR/windows/run-window admin-portal
+    $APPLICATION_LIB_DIR/windows/run-window admin-portal
   fi
 
   if [ -n "$STOP" ] 
   then
-    $BINWARDEN_EX_DIR/windows/stop-window admin-portal
+    $APPLICATION_LIB_DIR/windows/stop-window admin-portal
   fi
 
   if [ -n "$DESTROY" ] 
   then
-    $BINWARDEN_EX_DIR/windows/destroy-window admin-portal
+    $APPLICATION_LIB_DIR/windows/destroy-window admin-portal
   fi
 fi
 
 if [ -n "$EDIT" ] 
 then
-    $BINWARDEN_EX_DIR/windows/editor-window server
+    $APPLICATION_LIB_DIR/windows/editor-window server
 fi
 
 if [ -n "$GIT" ] 
 then
-  $BINWARDEN_EX_DIR/windows/git-window server
+  $APPLICATION_LIB_DIR/windows/git-window server
 fi
 
 if [ -n "$MSSQL" ] 
 then
   if [ -n "$RUN" ] 
   then
-    $BINWARDEN_EX_DIR/windows/run-window mssql
+    $APPLICATION_LIB_DIR/windows/run-window mssql
   fi
 
   if [ -n "$STOP" ] 
   then
-    $BINWARDEN_EX_DIR/windows/stop-window mssql
+    $APPLICATION_LIB_DIR/windows/stop-window mssql
   fi
 
   if [ -n "$DESTROY" ] 
   then
-    $BINWARDEN_EX_DIR/windows/destroy-window mssql
+    $APPLICATION_LIB_DIR/windows/destroy-window mssql
   fi
 
   if [ -n "$MIGRATE" ] 
   then
-    $BINWARDEN_EX_DIR/windows/migrate-window mssql
+    $APPLICATION_LIB_DIR/windows/migrate-window mssql
   fi
 fi
 
@@ -181,22 +181,22 @@ if [ -n "$MYSQL" ]
 then
   if [ -n "$RUN" ] 
   then
-    $BINWARDEN_EX_DIR/windows/run-window mysql
+    $APPLICATION_LIB_DIR/windows/run-window mysql
   fi
 
   if [ -n "$STOP" ] 
   then
-    $BINWARDEN_EX_DIR/windows/stop-window mysql
+    $APPLICATION_LIB_DIR/windows/stop-window mysql
   fi
 
   if [ -n "$DESTROY" ] 
   then
-    $BINWARDEN_EX_DIR/windows/destroy-window mysql
+    $APPLICATION_LIB_DIR/windows/destroy-window mysql
   fi
 
   if [ -n "$MIGRATE" ] 
   then
-    $BINWARDEN_EX_DIR/windows/migrate-window mysql
+    $APPLICATION_LIB_DIR/windows/migrate-window mysql
   fi
 fi
 
@@ -204,17 +204,17 @@ if [ -n "$POSTGRES" ]
 then
   if [ -n "$RUN" ] 
   then
-    $BINWARDEN_EX_DIR/windows/run-window postgres
+    $APPLICATION_LIB_DIR/windows/run-window postgres
   fi
 
   if [ -n "$STOP" ] 
   then
-    $BINWARDEN_EX_DIR/windows/stop-window postgres
+    $APPLICATION_LIB_DIR/windows/stop-window postgres
   fi
 
   if [ -n "$DESTROY" ] 
   then
-    $BINWARDEN_EX_DIR/windows/destroy-window postgres
+    $APPLICATION_LIB_DIR/windows/destroy-window postgres
   fi
 fi
 
@@ -222,12 +222,12 @@ if [ -n "$SQLITE" ]
 then
   if [ -n "$MIGRATE" ] 
   then
-    $BINWARDEN_EX_DIR/windows/migrate-window sqlite
+    $APPLICATION_LIB_DIR/windows/migrate-window sqlite
   fi
 fi
 
 if [ -n "$TERMINAL" ] 
 then
-  $BINWARDEN_EX_DIR/windows/terminal-window server
+  $APPLICATION_LIB_DIR/windows/terminal-window server
 fi
 
