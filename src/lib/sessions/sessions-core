@@ -43,11 +43,8 @@ function start_session () {
 function ensure_command_installed () {
   if ! command -v ${1} > /dev/null 2>&1
   then
-    log_warning  "${1} not found - it will be installed now"
-    $APPLICATION_LIB_DIR/installers/install-${1}
-  #else
-    ## This gets a little loud
-    # log_success "${1} detected"
+    log_error  "${1} not found - please install!"
+    return 0
   fi
 }
 
@@ -65,9 +62,6 @@ function ensure_repo_cloned () {
   if [ ! -d "$HOME/bitwarden/${1}" ]; then
     log_warning  "${1} not found - cloning"
     $APPLICATION_LIB_DIR/cloners/clone-${1}
-  #else
-    ## This gets a little loud
-    #log_success "${1} found"
   fi
 }
 
