@@ -10,8 +10,11 @@ in stdenv.mkDerivation {
   phases = [ "unpackPhase" "installPhase" ];
 
   installPhase = ''
-    mkdir -p $out/bin
-    cp -r $src/d $out/
-    install -D $src/bin/binwarden $out/bin
+    mkdir -p $out/binwarden
+    cp -r $src/* $out/binwarden
+  '';
+
+  postFixup = ''
+    wrapProgram $out/binwarden/bin/b --prefix PATH : $out/bin
   '';
 }
