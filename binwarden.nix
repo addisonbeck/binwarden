@@ -15,6 +15,6 @@ in stdenv.mkDerivation {
   '';
 
   postFixup = ''
-    wrapProgram $out/binwarden/bin/b --prefix PATH : $out/bin
+    wrapProgram $out/binwarden/bin/b --prefix PATH : $out/binwarden/bin/b
   '';
 }
