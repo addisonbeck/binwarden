@@ -1,5 +1,4 @@
-{ stdenv }:
-
+{ stdenv, pkgs, ... }:
 let version = "0.0.1";
 in stdenv.mkDerivation {
 
@@ -7,14 +6,16 @@ in stdenv.mkDerivation {
 
   src = ./src;
 
-  phases = [ "unpackPhase" "installPhase" ];
+  buildInputs = [ pkgs.makeWrapper ];
+  phases = [ "unpackPhase" "installPhase" "postInstall" ];
 
   installPhase = ''
     mkdir -p $out/binwarden
     cp -r $src/* $out/binwarden
   '';
 
-  postFixup = ''
-    wrapProgram $out/binwarden/bin/b --prefix PATH : $out/binwarden/bin/b
+  postInstall = ''
+    mkdir -p $out/bin
+    ln -fs "$out/binwarden/bin/b" $out/bin/b
   '';
 }
