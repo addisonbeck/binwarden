@@ -69,3 +69,8 @@ if [ -n "$GIT" ]
 then
   $APPLICATION_LIB_DIR/windows/git-window splunk
 fi
+
+if [ -n "$TERMINAL" ] 
+then
+  $APPLICATION_LIB_DIR/windows/terminal-window splunk
+fi
