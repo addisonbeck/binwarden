@@ -17,7 +17,7 @@ export SUPPORTS_DESTRUCTION=false
 export SUPPORTS_STOPPING=true
 
 function full_session_name () {
-  printf "${SESSION_PREFIX} ${SEPARATOR_CHAR} ${SESSION_NAME}"
+  printf "${SESSION_PREFIX}${SEPARATOR_CHAR} ${SESSION_NAME}"
 }
 
 function kill_session_if_exists () {
