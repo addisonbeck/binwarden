@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+source $APPLICATION_LIB_DIR/sessions/session-server
+
+SUPPORTS_BUILDING=true
+
+PROJECT_NAME="Events Processor"
+LOG_FILE_NAME="events-processor"
+SUB_PROJECT_PATH="$PROJECT_PATH/src/EventsProcessor"
+SUB_PROJECT_NAME="Events Processor"
+SUB_PROJECT_NAME_SHORT="Events Processor"
+RUN_COMMAND="touch $HOME/logs/${LOG_FILE_NAME}.log; cd $SUB_PROJECT_PATH; dotnet watch run 2>&1 | tee $HOME/logs/${LOG_FILE_NAME}.log"

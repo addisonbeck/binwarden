@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+source $APPLICATION_LIB_DIR/sessions/sessions-core
+
+SUPPORTS_EDITING=true
+SUPPORTS_GIT=true
+SUPPORTS_TERMINAL=true
+SUPPORTS_DESTRUCTION=true
+SUPPORTS_BUILDING=true
+SUPPORTS_STOPPING=true
+
+PROJECT_NAME="Splunk"
+PROJECT_PATH="$HOME/bitwarden/splunk/"
+SESSION_PREFIX="🛡️"
+SESSION_NAME="BW Splunk"
+RUN_COMMAND="bash $PROJECT_PATH/package.sh && bash $PROJECT_PATH/deploy.sh"
+DESTROY_COMMAND="rm -rf $PROJECT_PATH"
+BUILD_DEPS=("mssql" "mailcatcher" "azurite" "api" "identity" "splunk-container" "web" "events" "events-processor")
+
+ensure_repo_cloned splunk

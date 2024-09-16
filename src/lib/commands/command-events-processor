@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+while [[ $# -gt 0 ]] 
+do
+  case $1 in
+    r|run )
+      RUN="true"
+      shift
+      ;;
+
+    s|stop )
+      STOP="true"
+      shift
+      ;;
+
+    d|destroy )
+      DESTROY="true"
+      shift
+      ;;
+    *)
+      echo "Option ${1} is not supported by this command"
+      shift
+      ;;
+  esac
+done
+
+if [ -n "$RUN" ] 
+then
+  $APPLICATION_LIB_DIR/windows/run-window events-processor
+fi
+
+if [ -n "$STOP" ] 
+then
+  $APPLICATION_LIB_DIR/windows/stop-window events-processor
+fi
+
+if [ -n "$DESTROY" ] 
+then
+  $APPLICATION_LIB_DIR/windows/destroy-window events-processor
+fi

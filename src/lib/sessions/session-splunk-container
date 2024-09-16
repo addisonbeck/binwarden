@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+CONTAINERNAME=splunk
+LOG_FILE_NAME=bw-splunk-container.log
+SUB_PROJECT_NAME="SPLUNK"
+SUB_PROJECT_NAME_SHORT="SPLUNK"
+
+source $APPLICATION_LIB_DIR/sessions/session-docker
+
+PROJECT_PATH="$HOME/bitwarden/splunk"
+RUN_COMMAND="touch $HOME/logs/${LOG_FILE_NAME} && cd $PROJECT_PATH && docker run --rm --platform linux/amd64 --name splunk -d -p 8001:8000 -p 8089:8089 -e SPLUNK_START_ARGS='--accept-license' -e SPLUNK_PASSWORD='password' splunk/splunk:latest"
+
+PROJECT_NAME="Splunk Container"

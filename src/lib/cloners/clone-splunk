@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+clone_repo () {
+  cd $HOME/bitwarden
+  git clone git@github.com:bitwarden/splunk.git
+}
+
+install_packages () {
+  poetry env use python3.9
+  poetry shell | poetry install --with dev;
+}
+
+setup_splunk () {
+  mkdir -p $HOME/bitwarden
+  clone_repo
+  cd $HOME/bitwarden/splunk
+  install_packages
+}
+
+setup_splunk
