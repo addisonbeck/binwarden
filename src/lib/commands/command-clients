@@ -45,6 +45,26 @@ do
   esac
 done
 
+if [ -n "$GIT" ] 
+then
+  $APPLICATION_LIB_DIR/windows/git-window clients
+fi
+
+if [ -n "$EDIT" ] 
+then
+  $APPLICATION_LIB_DIR/windows/editor-window clients
+fi
+
+if [ -n "$TERMINAL" ] 
+then
+  $APPLICATION_LIB_DIR/windows/terminal-window clients
+fi
+
+if [ -n "$TEST" ] 
+then
+  $APPLICATION_LIB_DIR/windows/test-window clients
+fi
+
 if [ -n "$WEB" ] 
 then
   if [ -n "$RUN" ] 
@@ -61,24 +81,4 @@ then
   then
     $APPLICATION_LIB_DIR/windows/destroy-window web
   fi
-
-  if [ -n "$GIT" ] 
-  then
-    $APPLICATION_LIB_DIR/windows/git-window web
-  fi
-
-  if [ -n "$EDIT" ] 
-  then
-    $APPLICATION_LIB_DIR/windows/editor-window web
-  fi
-fi
-
-if [ -n "$TERMINAL" ] 
-then
-  $APPLICATION_LIB_DIR/windows/terminal-window clients
-fi
-
-if [ -n "$TEST" ] 
-then
-  $APPLICATION_LIB_DIR/windows/test-window clients
 fi
