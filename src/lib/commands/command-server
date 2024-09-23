@@ -82,6 +82,11 @@ do
       ADMIN="true"
       shift
       ;;
+    
+    mail )
+      MAIL="true"
+      shift
+      ;;
 
     *)
       echo "Option ${1} is not supported by this command"
@@ -215,6 +220,24 @@ then
   if [ -n "$DESTROY" ] 
   then
     $APPLICATION_LIB_DIR/windows/destroy-window postgres
+  fi
+fi
+
+if [ -n "$MAIL" ] 
+then
+  if [ -n "$RUN" ] 
+  then
+    $APPLICATION_LIB_DIR/windows/run-window mailcatcher
+  fi
+
+  if [ -n "$STOP" ] 
+  then
+    $APPLICATION_LIB_DIR/windows/stop-window mailcatcher
+  fi
+
+  if [ -n "$DESTROY" ] 
+  then
+    $APPLICATION_LIB_DIR/windows/destroy-window mailcatcher
   fi
 fi
 
