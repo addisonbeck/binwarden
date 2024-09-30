@@ -39,3 +39,8 @@ if [ -n "$DESTROY" ]
 then
   $APPLICATION_LIB_DIR/windows/destroy-window mssql
 fi
+
+if [ -n "$MIGRATE" ] 
+then
+  $APPLICATION_LIB_DIR/windows/migrate-window mssql
+fi

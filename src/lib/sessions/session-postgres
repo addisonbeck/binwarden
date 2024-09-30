@@ -12,4 +12,6 @@ MIGRATE_COMMAND="pwsh migrate.ps1 --postgres"
 
 source $APPLICATION_LIB_DIR/sessions/session-docker
 
+SUPPORTS_MIGRATING=true
+
 PROJECT_NAME="Postgres Container"

@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+source $APPLICATION_LIB_DIR/sessions/session-server
+
+PROJECT_NAME="Sqlite"
+SUPPORTS_DESTRUCTION=true
+SUPPORTS_MIGRATING=true
+
+PROJECT_PATH="$HOME/bitwarden/server/dev"
+SESSION_PREFIX="🛡️"
+SESSION_NAME="BW Sqlite"
+DESTROY_COMMAND="rm $PROJECT_PATH/bitwarden.db"
+MIGRATE_PATH="$PROJECT_PATH"
+MIGRATE_COMMAND="pwsh migrate.ps1 --sqlite"
+LOG_FILE_NAME="sqlite"

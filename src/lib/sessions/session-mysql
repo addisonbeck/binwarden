@@ -12,4 +12,6 @@ MIGRATE_COMMAND="pwsh migrate.ps1 --mysql"
 
 source $APPLICATION_LIB_DIR/sessions/session-docker
 
-PROJECT_NAME="MSSQL Container"
+SUPPORTS_MIGRATING=true
+
+PROJECT_NAME="MYSQL Container"

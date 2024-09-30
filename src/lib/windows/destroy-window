@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+source $APPLICATION_LIB_DIR/helpers/logger
 source $APPLICATION_LIB_DIR/windows/windows-core ${1}
 
 if [ ! -d "${PROJECT_PATH}" ]

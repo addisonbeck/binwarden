@@ -3,13 +3,13 @@
 source $APPLICATION_LIB_DIR/sessions/sessions-core
 
 SUPPORTS_BUILDING=true
-SUPPORTS_DESTRCUTION=true
+SUPPORTS_DESTRUCTION=true
 
 PROJECT_NAME="Docker"
 PROJECT_PATH="$HOME/bitwarden/server/dev"
 SESSION_PREFIX="🛡️"
 SESSION_NAME="BW Containers"
-DESTROY_COMMAND="cd $PROJECT_PATH/dev; docker compose down -v --remove-orphans --rmi all ${COMPOSEPROFILENAME}; docker network prune -f"
+DESTROY_COMMAND="cd $PROJECT_PATH; docker compose down -v --remove-orphans --rmi all ${COMPOSEPROFILENAME}; docker network prune -f"
 RUN_COMMAND="touch $HOME/biwarden/logs/${LOG_FILE_NAME} cd $PROJECT_PATH; docker compose --profile ${COMPOSEPROFILENAME} up"
 
 ensure_repo_cloned server

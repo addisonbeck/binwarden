@@ -39,7 +39,7 @@ do
       ;;
 
     m|migrate )
-      MIGRATE = "true"
+      MIGRATE="true"
       shift
       ;;
 
@@ -59,7 +59,7 @@ do
       ;;
 
     s|sqlite )
-      SQLLITE="true"
+      SQLITE="true"
       shift
       ;;
 
@@ -164,6 +164,11 @@ then
   if [ -n "$RUN" ] 
   then
     $APPLICATION_LIB_DIR/windows/run-window mssql
+
+    # The database containers tend to conflict when all created at once. All
+    # threads try to create the same network and step on each other's toes
+    # this is a hack to stagger them.
+    # sleep 1
   fi
 
   if [ -n "$STOP" ] 
@@ -187,6 +192,10 @@ then
   if [ -n "$RUN" ] 
   then
     $APPLICATION_LIB_DIR/windows/run-window mysql
+    # The database containers tend to conflict when all created at once. All
+    # threads try to create the same network and step on each other's toes
+    # this is a hack to stagger them.
+    # sleep 1
   fi
 
   if [ -n "$STOP" ] 
@@ -221,6 +230,11 @@ then
   then
     $APPLICATION_LIB_DIR/windows/destroy-window postgres
   fi
+  
+  if [ -n "$MIGRATE" ] 
+  then
+    $APPLICATION_LIB_DIR/windows/migrate-window postgres
+  fi
 fi
 
 if [ -n "$MAIL" ] 
@@ -246,6 +260,11 @@ then
   if [ -n "$MIGRATE" ] 
   then
     $APPLICATION_LIB_DIR/windows/migrate-window sqlite
+  fi
+
+  if [ -n "$DESTROY" ] 
+  then
+    $APPLICATION_LIB_DIR/windows/destroy-window sqlite
   fi
 fi
 

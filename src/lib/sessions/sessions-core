@@ -15,6 +15,7 @@ export SUPPORTS_BUILDING=false
 export SUPPORTS_TERMINAL=false
 export SUPPORTS_DESTRUCTION=false
 export SUPPORTS_STOPPING=true
+export SUPPORTS_MIGRATING=false
 
 function full_session_name () {
   printf "${SESSION_PREFIX}${SEPARATOR_CHAR} ${SESSION_NAME}"

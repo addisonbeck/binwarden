@@ -2,6 +2,7 @@
 
 source $APPLICATION_LIB_DIR/sessions/session-server
 
+
 CONTAINERNAME=bitwardenserver-mssql-1
 COMPOSEPROFILENAME=mssql
 LOG_FILE_NAME=bw-docker-mssql.log
@@ -11,5 +12,7 @@ MIGRATE_PATH="$PROJECT_PATH/dev"
 MIGRATE_COMMAND="pwsh migrate.ps1 --mssql"
 
 source $APPLICATION_LIB_DIR/sessions/session-docker
+
+SUPPORTS_MIGRATING=true
 
 PROJECT_NAME="MSSQL Container"
