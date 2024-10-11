@@ -9,5 +9,11 @@ LOG_FILE_NAME="Admin"
 SUB_PROJECT_PATH="$PROJECT_PATH/src/Admin"
 SUB_PROJECT_NAME="Admin"
 SUB_PROJECT_NAME_SHORT="Admin"
-RUN_COMMAND="touch $HOME/bitwarden/logs/${LOG_FILE_NAME}.log; cd $SUB_PROJECT_PATH; dotnet watch run 2>&1 | tee $HOME/bitwarden/logs/${LOG_FILE_NAME}.log"
+RUN_COMMAND="
+touch $HOME/bitwarden/logs/${LOG_FILE_NAME}.log; 
+cd $SUB_PROJECT_PATH; 
+npm ci 2>&1 | tee $HOME/bitwarden/logs/${LOG_FILE_NAME}.log; 
+npm run build 2>&1 | tee -a $HOME/bitwarden/logs/${LOG_FILE_NAME}.log; 
+dotnet watch run 2>&1 | tee -a $HOME/bitwarden/logs/${LOG_FILE_NAME}.log
+"
 BUILD_DEPS=("mssql" "mailcatcher" "azurite")
