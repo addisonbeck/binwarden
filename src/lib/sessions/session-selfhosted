@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+source $APPLICATION_LIB_DIR/sessions/session-server
+
+
+CONTAINERNAME=bitwardenserver-mssql-1
+COMPOSEPROFILENAME=mssql
+LOG_FILE_NAME=bw-docker-mssql-selfhosted.log
+SUB_PROJECT_NAME="Selfhosted"
+SUB_PROJECT_NAME_SHORT="Selfhosted"
+MIGRATE_PATH="$PROJECT_PATH/dev"
+MIGRATE_COMMAND="pwsh migrate.ps1 -selfhost"
+
+source $APPLICATION_LIB_DIR/sessions/session-docker
+
+SUPPORTS_MIGRATING=true
+
+PROJECT_NAME="Selfhosted Container"

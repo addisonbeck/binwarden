@@ -48,6 +48,11 @@ do
       shift
       ;;
 
+    sh|selfhosted )
+      SELFHOSTED="true"
+      shift
+      ;;
+
     my|mysql )
       MYSQL="true"
       shift
@@ -184,6 +189,29 @@ then
   if [ -n "$MIGRATE" ] 
   then
     $APPLICATION_LIB_DIR/windows/migrate-window mssql
+  fi
+fi
+
+if [ -n "$SELFHOSTED" ] 
+then
+  if [ -n "$RUN" ] 
+  then
+    $APPLICATION_LIB_DIR/windows/run-window selfhosted
+  fi
+
+  if [ -n "$STOP" ] 
+  then
+    $APPLICATION_LIB_DIR/windows/stop-window selfhosted
+  fi
+
+  if [ -n "$DESTROY" ] 
+  then
+    $APPLICATION_LIB_DIR/windows/destroy-window selfhosted
+  fi
+
+  if [ -n "$MIGRATE" ] 
+  then
+    $APPLICATION_LIB_DIR/windows/migrate-window selfhosted
   fi
 fi
 
