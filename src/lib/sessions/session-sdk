@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+source $APPLICATION_LIB_DIR/sessions/sessions-core
+
+SUPPORTS_EDITING=true
+SUPPORTS_GIT=true
+SUPPORTS_TERMINAL=true
+
+PROJECT_PATH="${HOME}/bitwarden/sdk"
+SESSION_PREFIX="🦀"
+SESSION_NAME="sdk"
+
+ensure_repo_cloned sdk
