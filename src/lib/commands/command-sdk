@@ -69,5 +69,5 @@ fi
 
 if [ -n "$TERMINAL" ] 
 then
-  $APPLICATION_LIB_DIR/windows/terminal-window contributing-docs
+  $APPLICATION_LIB_DIR/windows/terminal-window $PROJECT_KEY
 fi
