@@ -1,2 +1,10 @@
-.DS_Store
-/result
+*
+
+!.gitignore
+!flake.nix
+!flake.lock
+!.envrc
+!README.md
+!justfile
+!nix/
+!nix/**
